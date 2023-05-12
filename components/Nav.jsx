@@ -7,7 +7,7 @@ import Balance from "./UI/Balance";
 export default function Nav() {
   return (
     <nav className=" flex flex-row w-full p-3 px-4 lg:px-10 justify-between sm:justify-between h-[70px] mb-3">
-      <Link href="/" class="flex items-center">
+      <Link href="/" className="flex items-center">
         <img
           src="https://flowbite.com/docs/images/logo.svg"
           className="h-8 mr-3"
