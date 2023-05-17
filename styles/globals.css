@@ -1,16 +1,44 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "leaflet/dist/leaflet.css";
 
 * {
   font-family: "Inter", sans-serif;
   line-height: 1.5;
-  scroll-behavior: smooth;
-  overflow: auto;
 }
 .outline {
   outline: solid red;
 }
 ::-webkit-scrollbar {
   width: 0;
+}
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 8px;
+  padding: 16px;
+  z-index: 9999; /* Ajusta el valor de z-index según sea necesario */
+}
+.leaflet-control-attribution {
+  display: none !important;
+}
+/* Estilos para la superposición del modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9998; /* Asegúrate de que el valor de z-index sea menor al del modal */
+}
+.react-datepicker-wrapper,
+.react-datepicker__input-container,
+.react-datepicker__input-container input {
+  display: block;
+  width: 100%;
 }
