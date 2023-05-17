@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import CountryDropdown from "./UI/CountryDropdown";
-import ToogleMode from "./UI/ToogleMode";
-import Balance from "./UI/Balance";
 
 export default function Nav() {
   return (
