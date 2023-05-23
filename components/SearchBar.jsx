@@ -14,42 +14,10 @@ export default function SearchBar() {
     setShow(state);
   };
   const handleSubmit = () => {};
-  const options = {
-    title: "Selecciona la fecha",
-    autoHide: true,
-    todayBtn: false,
-    clearBtn: false,
-    weekDays: ["Lu", "Ma", "Mi", "Ju", "Vi", "Sa", "Do"],
-    maxDate: new Date("2023-04-01"),
-    minDate: new Date("2023-03-01"),
-    theme: {
-      todayBtn: "",
-      clearBtn: "",
-      icons: "",
-      text: "",
-      input: "",
-      inputIcon: "",
-      selected: "",
-    },
-    icons: {
-      // () => ReactElement | JSX.Element
-      prev: () => <span>Ante.</span>,
-      next: () => <span>Sig.</span>,
-    },
-    datepickerClassNames: "mt-[160%] lg:mt-[33%]",
-    defaultDate: new Date("2023-03-02"),
-    language: "es",
-  };
+
   return (
     <div className="flex flex-row  bg-[white] py-2 px-3 rounded-full items-center">
       <Search />
-      <Datepicker
-        options={options}
-        onChange={handleChange}
-        show={show}
-        setShow={handleClose}
-      />
-
       <div>
         <button
           className="bg-[#3056D3] py-2 px-5 rounded-full"
