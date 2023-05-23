@@ -1,18 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Nav() {
   return (
     <nav className=" flex flex-row w-full p-3 px-4 lg:px-10 justify-between sm:justify-between h-[70px] mb-3">
       <Link href="/" className="flex items-center">
-        <img
-          src="https://flowbite.com/docs/images/logo.svg"
-          className="h-8 mr-3"
-          alt="Flowbite Logo"
-        />
-        <span className="self-center text-2xl font-semibold whitespace-nowrap hidden lg:block dark:text-white">
-          SafePosi
-        </span>
+        <img src="/logo.png" className="ms-3 h-16 w-full" alt="Logo" />
       </Link>
       <button
         data-collapse-toggle="navbar-default"
@@ -76,7 +70,7 @@ export default function Nav() {
       </div>
       <div className="justify-end sm:pr-16 sm:flex flex lg:pr-0">
         <Link
-          href="/"
+          href="/login"
           className="text-dark hover:text-primary py-3 px-7 lg:text-xl text-base font-medium"
         >
           Ingresar

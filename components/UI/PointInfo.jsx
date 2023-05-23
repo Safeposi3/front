@@ -1,6 +1,6 @@
 import { useState } from "react";
 import DatePicker from "./DatePicker";
-
+import RangeHour from "./RangeHour";
 export default function PointInfo({ point }) {
   const [selectedDate, setSelectedDate] = useState(null);
 
@@ -13,22 +13,16 @@ export default function PointInfo({ point }) {
   }
 
   return (
-    <div>
-      <h2>Información del punto:</h2>
+    <div className="bg-gray-100 p-4 rounded-md shadow-md w-[30%]">
+      <h2 className="text-center">Información del punto:</h2>
       <p>ID: {point.id}</p>
       <p>Ubicación: {point.location.join(", ")}</p>
 
-      <h2>Selecciona una fecha:</h2>
+      <h2 className="text-center">Selecciona una fecha:</h2>
       <DatePicker />
 
-      <h2>Selecciona un horario:</h2>
-      <select className="border border-gray-300 px-4 py-2 mt-2">
-        {point.timesAvailables.map((time) => (
-          <option key={time} value={time}>
-            {time}
-          </option>
-        ))}
-      </select>
+      <h2 className="text-center">Selecciona un horario:</h2>
+      <RangeHour timesAvailables={point.timesAvailables} />
     </div>
   );
 }

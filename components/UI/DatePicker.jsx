@@ -6,8 +6,8 @@ const options = {
   todayBtn: false,
   clearBtn: false,
   weekDays: ["Lu", "Ma", "Mi", "Ju", "Vi", "Sa", "Do"],
-  maxDate: new Date("2023-04-01"),
-  minDate: new Date("2023-03-01"),
+  maxDate: new Date("2023-06-01"),
+  minDate: new Date("2023-05-01"),
   theme: {
     todayBtn: "",
     clearBtn: "",
@@ -23,7 +23,7 @@ const options = {
     next: () => <span>Sig.</span>,
   },
   datepickerClassNames: "mt-[160%] lg:mt-[33%]",
-  defaultDate: new Date("2023-03-02"),
+  defaultDate: new Date("2023-05-02"),
   language: "es",
 };
 
@@ -37,7 +37,7 @@ const DatePicker = () => {
   };
 
   return (
-    <div>
+    <div className="shadow-md rounded-lg w-[50%]">
       <Datepicker
         options={options}
         onChange={handleChange}

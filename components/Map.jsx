@@ -1,10 +1,4 @@
-import {
-  MapContainer,
-  Marker,
-  Popup,
-  TileLayer,
-  useMapEvents,
-} from "react-leaflet";
+import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import { useState } from "react";
 import { Icon } from "leaflet";
 
@@ -123,11 +117,11 @@ export default function Map({ onPointClick }) {
   });
 
   return (
-    <div>
+    <div className="border border-gray-300 rounded-md">
       <MapContainer
         center={tabarcaCoords}
         zoom={16.5}
-        className="h-[400px] w-[600px]"
+        className="h-[400px] w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px]"
         scrollWheelZoom={false}
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
