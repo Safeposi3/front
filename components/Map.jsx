@@ -4,8 +4,7 @@ import { Icon } from "leaflet";
 
 export default function Map({ onPointClick }) {
   const [tabarcaCoords, setTabarcaCoords] = useState([
-    38.16631881567097,
-    -0.4794345305520023,
+    38.16631881567097, -0.4794345305520023,
   ]);
   const playasTarbarca = [
     {

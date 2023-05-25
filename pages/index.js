@@ -9,6 +9,9 @@ export default function Home() {
     <div>
       <Nav />
       <Main />
+      <div>
+        <p>Aquí va toda la info de Landing</p>
+      </div>
     </div>
   );
 }
