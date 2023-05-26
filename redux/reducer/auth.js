@@ -2,15 +2,15 @@ import * as u from "../../constants/auth";
 
 export const LoginReducer = (state = {}, action) => {
   switch (action.type) {
-    case u.GET_RESERVATIONS_REQUEST:
+    case u.LOGIN_REQUEST:
       return {
         loading: true,
       };
-    case u.GET_RESERVATIONS_SUCCESS:
+    case u.LOGIN_SUCCESS:
       return {
         data: { ...action.payload },
       };
-    case u.GET_RESERVATIONS_FAILURE:
+    case u.LOGIN_FAILURE:
       return {
         error: action.payload,
       };
@@ -21,15 +21,15 @@ export const LoginReducer = (state = {}, action) => {
 
 export const RegisterReducer = (state = {}, action) => {
   switch (action.type) {
-    case u.GET_RESERVATIONS_REQUEST:
+    case u.REGISTER_REQUEST:
       return {
         loading: true,
       };
-    case u.GET_RESERVATIONS_SUCCESS:
+    case u.REGISTER_SUCCESS:
       return {
         data: { ...action.payload },
       };
-    case u.GET_RESERVATIONS_FAILURE:
+    case u.REGISTER_FAILURE:
       return {
         error: action.payload,
       };
@@ -40,15 +40,15 @@ export const RegisterReducer = (state = {}, action) => {
 
 export const LogoutReducer = (state = {}, action) => {
   switch (action.type) {
-    case u.GET_RESERVATIONS_REQUEST:
+    case u.LOGOUT_REQUEST:
       return {
         loading: true,
       };
-    case u.GET_RESERVATIONS_SUCCESS:
+    case u.LOGOUT_SUCCESS:
       return {
         data: { ...action.payload },
       };
-    case u.GET_RESERVATIONS_FAILURE:
+    case u.LOGOUT_FAILURE:
       return {
         error: action.payload,
       };

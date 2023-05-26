@@ -4,7 +4,8 @@ import { Icon } from "leaflet";
 
 export default function Map({ onPointClick }) {
   const [tabarcaCoords, setTabarcaCoords] = useState([
-    38.16631881567097, -0.4794345305520023,
+    38.16631881567097,
+    -0.4794345305520023,
   ]);
   const playasTarbarca = [
     {
@@ -116,11 +117,14 @@ export default function Map({ onPointClick }) {
   });
 
   return (
-    <div className="border border-gray-300 rounded-md">
+    <div
+      className="border border-gray-300 rounded-md"
+      style={{ height: "90vh", width: "70vw" }}
+    >
       <MapContainer
         center={tabarcaCoords}
-        zoom={16.5}
-        className="h-[400px] w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px]"
+        zoom={16}
+        style={{ height: "100%", width: "100%" }}
         scrollWheelZoom={false}
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
