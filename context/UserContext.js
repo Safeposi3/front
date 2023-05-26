@@ -3,19 +3,17 @@ import React, { createContext, useState, useEffect } from "react";
 export const UserContext = createContext(null);
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [loggedIn, setLoggedIn] = useState(null);
 
   // Load the user data from localStorage when the component first mounts
   useEffect(() => {
-    const storedUserData = localStorage.getItem("userdata");
-    if (storedUserData) {
-      setUser(JSON.parse(storedUserData));
+    const token = localStorage.getItem("token");
+    if (token) {
+      setLoggedIn(token);
     }
   }, []);
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
-      {children}
-    </UserContext.Provider>
+    <UserContext.Provider value={loggedIn}>{children}</UserContext.Provider>
   );
 };

@@ -5,6 +5,7 @@ import {
   createShipReducer,
   updateShipReducer,
   deleteShipReducer,
+  listShipsReducer,
 } from "./reducer/ships";
 import {
   getReservationReducer,
@@ -21,6 +22,7 @@ export default configureStore({
     createShip: createShipReducer,
     updateShip: updateShipReducer,
     deleteShip: deleteShipReducer,
+    listShips: listShipsReducer,
     getReservation: getReservationReducer,
     createReservation: createReservationReducer,
     updateReservation: updateReservationReducer,

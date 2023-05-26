@@ -7,7 +7,8 @@ import { register } from "../redux/actions/auth";
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
 export default function Register() {
-  const { user } = useContext(UserContext);
+  const useAuth = useContext(UserContext);
+
   const router = useRouter();
   const dispatch = useDispatch();
   const {
@@ -30,10 +31,10 @@ export default function Register() {
     city: "",
   });
   useEffect(() => {
-    if (user) {
+    if (useAuth) {
       router.push("/dashboard");
     }
-  }, [user]);
+  }, [useAuth]);
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();

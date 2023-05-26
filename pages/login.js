@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../redux/actions/auth";
 import { useContext } from "react";
@@ -18,10 +18,8 @@ export default function Login() {
     data: dataLogin,
     error: errorLogin,
   } = useSelector((state) => state.login);
-  const { user } = useContext(UserContext);
-  if (user != null) {
-    router.push("/dashboard");
-  }
+  const useAuth = useContext(UserContext);
+
   const validateForm = () => {
     if (!email || !password) {
       setError("Please fill in all fields");
@@ -33,6 +31,12 @@ export default function Login() {
     }
     return true;
   };
+  useEffect(() => {
+    if (useAuth) {
+      console.log(useAuth);
+      router.push("/dashboard");
+    }
+  }, [useAuth]);
   useEffect(() => {
     setError(""); // Clear the error message when email or password changes
   }, [email, password]);
