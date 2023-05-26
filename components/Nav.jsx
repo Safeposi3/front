@@ -28,12 +28,20 @@ const NavBar = () => {
   return (
     <div
       className={
-        shadow ? "fixed w-full h-20 shadow-xl z-50" : "fixed w-full h-20 z-50"
+        shadow
+          ? "fixed w-full h-20 shadow-xl z-[100] ease-in-out duration-300 bg-[#ecf0f3]"
+          : "fixed w-full h-20 z-[100] bg-[#ecf0f3]"
       }
     >
-      <div className="flex justify-between items-center w-full h-full px-10 2xl:px-16">
+      <div className="flex justify-between items-center w-full h-full px-2 2xl:px-16">
         <Link href="/">
-          <Image src="/../public/logo.png" alt="/" width={35} height={70} />
+          <Image
+            className="cursor-pointer"
+            src="/../public/logo.png"
+            alt="/"
+            width={35}
+            height={70}
+          />
         </Link>
         <div>
           <ul className="hidden md:flex">
