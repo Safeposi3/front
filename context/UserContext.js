@@ -7,12 +7,11 @@ export const UserProvider = ({ children }) => {
 
   // Load the user data from localStorage when the component first mounts
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
     if (token) {
       setLoggedIn(token);
     }
   }, []);
-
   return (
     <UserContext.Provider value={loggedIn}>{children}</UserContext.Provider>
   );
