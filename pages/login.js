@@ -33,7 +33,6 @@ export default function Login() {
   };
   useEffect(() => {
     if (useAuth) {
-      console.log(useAuth);
       router.push("/dashboard");
     }
   }, [useAuth]);
