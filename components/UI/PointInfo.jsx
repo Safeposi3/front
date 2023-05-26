@@ -13,7 +13,7 @@ export default function PointInfo({ point }) {
   }
 
   return (
-    <div className="bg-gray-100 p-4 rounded-md shadow-md w-[30%]">
+    <div className="bg-gray-100 p-4 rounded-md mx-auto shadow-md w-[80%]">
       <h2 className="text-center">Información del punto:</h2>
       <p>ID: {point.id}</p>
       <p>Ubicación: {point.location.join(", ")}</p>

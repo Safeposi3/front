@@ -1,7 +1,7 @@
 import axios from "axios";
 import * as u from "../../constants/ships";
 
-const BASE_URL = "http://127.0.0.1:8000";
+const BASE_URL = "http://127.0.0.1:8000/api";
 
 export const getShip = (id) => async (dispatch) => {
   try {
