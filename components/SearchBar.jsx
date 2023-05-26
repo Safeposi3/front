@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import Search from "@mui/icons-material/Search";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import Datepicker from "tailwind-datepicker-react";
 export default function SearchBar() {
   const [search, setSearch] = useState("");
   const dispatch = useDispatch();

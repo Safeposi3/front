@@ -27,9 +27,14 @@ export const deleteReservation = (id) => async (dispatch) => {
 export const createReservation = (data) => async (dispatch) => {
   try {
     dispatch({ type: u.CREATE_RESERVATION_REQUEST });
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+    };
     const { data: reservation } = await axios.post(
       `${BASE_URL}/reservations/`,
-      data
+      data,
+      { headers }
     );
     dispatch({ type: u.CREATE_RESERVATION_SUCCESS, payload: reservation });
   } catch (error) {

@@ -11,7 +11,7 @@ export const login = (email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(`${BASE_URL}/login/`, payload);
-    localStorage.setItem("token", data.token);
+    sessionStorage.setItem("token", data.token);
     dispatch({ type: a.LOGIN_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: a.LOGIN_FAILURE, payload: error?.message });
@@ -45,7 +45,7 @@ export const register = (form) => async (dispatch) => {
       city: form.city,
     };
     const { data } = await axios.post(`${BASE_URL}/register/`, payload);
-    localStorage.setItem("token", data.token);
+    sessionStorage.setItem("token", data.token);
     dispatch({ type: a.REGISTER_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: a.REGISTER_FAILURE, payload: error });

@@ -37,7 +37,7 @@ const DatePicker = () => {
   };
 
   return (
-    <div className="shadow-md rounded-lg w-[50%]">
+    <div className="shadow-md rounded-lg w-[100%]">
       <Datepicker
         options={options}
         onChange={handleChange}

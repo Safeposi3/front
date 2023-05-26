@@ -19,6 +19,10 @@ export const createShip = (shipData) => async (dispatch) => {
   // shipData should contain necessary data to create a ship
   try {
     dispatch({ type: u.CREATE_SHIP_REQUEST });
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+    };
     const { data } = await axios.post(`${BASE_URL}/ships/`, shipData);
 
     dispatch({ type: u.CREATE_SHIP_SUCCESS, payload: data });
@@ -44,7 +48,7 @@ export const deleteShip = (id) => async (dispatch) => {
     dispatch({ type: u.DELETE_SHIP_REQUEST });
     const headers = {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
+      Authorization: `Bearer ${sessionStorage.getItem("token")}`,
     };
 
     const { data } = await axios.delete(`${BASE_URL}/ships/${id}/`);
@@ -59,7 +63,7 @@ export const listShips = () => async (dispatch) => {
     dispatch({ type: u.LIST_SHIPS_REQUEST });
     const headers = {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
+      Authorization: `Bearer ${sessionStorage.getItem("token")}`,
     };
     const { data } = await axios.get(`${BASE_URL}/ships/`, { headers });
     dispatch({ type: u.LIST_SHIPS_SUCCESS, payload: data });
