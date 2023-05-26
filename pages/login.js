@@ -1,11 +1,24 @@
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useRouter } from "next/router";
+import { useState, useEffect, use } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../redux/actions/auth";
+import { useContext } from "react";
+import { UserContext } from "../context/UserContext";
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const {
+    loading: loadingLogin,
+    data: dataLogin,
+    error: errorLogin,
+  } = useSelector((state) => state.login);
+  const useAuth = useContext(UserContext);
 
   const validateForm = () => {
     if (!email || !password) {
@@ -19,34 +32,41 @@ export default function Login() {
     return true;
   };
   useEffect(() => {
+    if (useAuth) {
+      router.push("/dashboard");
+    }
+  }, [useAuth]);
+  useEffect(() => {
     setError(""); // Clear the error message when email or password changes
   }, [email, password]);
-
+  useEffect(() => {
+    if (dataLogin) {
+      router.push("/dashboard");
+    }
+  }, [dataLogin]);
+  useEffect(() => {
+    if (errorLogin) {
+      setError(errorLogin);
+    }
+  }, [errorLogin]);
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      try {
-        const response = await axios.post("http://127.0.0.1:8000/api/login/", {
-          email: email,
-          password: password,
-        });
-
-        const data = response.data;
-
-        // Handle successful login here
-        // For example, you can redirect the user to another page
-        // Or you can store the received token in the local storage
-      } catch (error) {
-        setError("Failed to login. Please try again."); // Set the error message
-        console.error(error);
-      }
+      dispatch(login(email, password));
     }
   };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <div>
-          <Image className="mx-auto" src="/logo.png" width={80} height={80} />
+          <Image
+            className="mx-auto"
+            src="/logo.png"
+            width={80}
+            height={80}
+            alt="Logo"
+          />
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Login to your account
           </h2>

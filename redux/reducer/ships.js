@@ -75,3 +75,22 @@ export const deleteShipReducer = (state = {}, action) => {
       return state;
   }
 };
+
+export const listShipsReducer = (state = {}, action) => {
+  switch (action.type) {
+    case u.LIST_SHIPS_REQUEST:
+      return {
+        loading: true,
+      };
+    case u.LIST_SHIPS_SUCCESS:
+      return {
+        data: [...action.payload],
+      };
+    case u.LIST_SHIPS_FAILURE:
+      return {
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
