@@ -1,7 +1,8 @@
 import axios from "axios";
 import * as u from "../../constants/ships";
+import { headers } from "next/dist/client/components/headers";
 
-const BASE_URL = "http://127.0.0.1:8000";
+const BASE_URL = "http://127.0.0.1:8000/api";
 
 export const getShip = (id) => async (dispatch) => {
   try {
@@ -18,6 +19,10 @@ export const createShip = (shipData) => async (dispatch) => {
   // shipData should contain necessary data to create a ship
   try {
     dispatch({ type: u.CREATE_SHIP_REQUEST });
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+    };
     const { data } = await axios.post(`${BASE_URL}/ships/`, shipData);
 
     dispatch({ type: u.CREATE_SHIP_SUCCESS, payload: data });
@@ -41,9 +46,28 @@ export const updateShip = (id, shipData) => async (dispatch) => {
 export const deleteShip = (id) => async (dispatch) => {
   try {
     dispatch({ type: u.DELETE_SHIP_REQUEST });
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+    };
+
     const { data } = await axios.delete(`${BASE_URL}/ships/${id}/`);
     dispatch({ type: u.DELETE_SHIP_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: u.DELETE_SHIP_FAILURE, payload: error });
+  }
+};
+
+export const listShips = () => async (dispatch) => {
+  try {
+    dispatch({ type: u.LIST_SHIPS_REQUEST });
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+    };
+    const { data } = await axios.get(`${BASE_URL}/ships/`, { headers });
+    dispatch({ type: u.LIST_SHIPS_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: u.LIST_SHIPS_FAILURE, payload: error });
   }
 };

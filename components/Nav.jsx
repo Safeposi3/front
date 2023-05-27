@@ -4,7 +4,8 @@ import React, { useEffect, useState } from "react";
 import { AiOutlineClose, AiOutlineMenu, AiOutlineMail } from "react-icons/ai";
 import { FaLinkedinIn, FaGithub } from "react-icons/fa";
 import { BsFillPersonLinesFill } from "react-icons/bs";
-
+import { useContext } from "react";
+import { UserContext } from "../context/UserContext";
 const NavBar = () => {
   const [nav, setNav] = useState(false);
   const [shadow, setShadow] = useState(false);
@@ -12,7 +13,6 @@ const NavBar = () => {
   const handleNav = () => {
     setNav(!nav);
   };
-
   useEffect(() => {
     const handleShadow = () => {
       if (window.scrollY >= 90) {
@@ -62,7 +62,7 @@ const NavBar = () => {
                 Ingresar
               </li>
             </Link>
-            <Link href="/#contact">
+            <Link href="/register">
               <li className="ml-10 text-sm uppercase hover:border-b">
                 Registrarse
               </li>

@@ -1,15 +1,39 @@
-import { useState } from "react";
-export default function HourRangeSelector({ timesAvailables }) {
+import { useState, useEffect } from "react";
+export default function HourRangeSelector({
+  timesAvailables,
+  onRangeAvailableChange,
+  setForm,
+  form,
+}) {
   const [startHour, setStartHour] = useState("");
   const [endHour, setEndHour] = useState("");
-
   const handleStartHourChange = (event) => {
     setStartHour(event.target.value);
+    const dateTime = new Date(form.date);
+    const [hours, minutes] = event.target.value.split(":");
+    dateTime.setHours(hours);
+    dateTime.setMinutes(minutes);
+    setForm((prevForm) => ({
+      ...prevForm,
+      start_time: dateTime.toISOString(),
+    }));
   };
 
   const handleEndHourChange = (event) => {
     setEndHour(event.target.value);
+    const dateTime = new Date(form.date);
+    const [hours, minutes] = event.target.value.split(":");
+    dateTime.setHours(hours);
+    dateTime.setMinutes(minutes);
+    setForm((prevForm) => ({
+      ...prevForm,
+      end_time: dateTime.toISOString(),
+    }));
   };
+
+  useEffect(() => {
+    onRangeAvailableChange(isRangeAvailable());
+  }, [startHour, endHour]);
   const generateHourOptions = () => {
     const options = [];
 
@@ -24,6 +48,9 @@ export default function HourRangeSelector({ timesAvailables }) {
     return options;
   };
   const isRangeAvailable = () => {
+    if (!startHour || !endHour || startHour === "Start" || endHour === "End") {
+      return true;
+    }
     if (startHour && endHour && startHour !== endHour) {
       const start = startHour;
       const end = endHour;
@@ -48,18 +75,18 @@ export default function HourRangeSelector({ timesAvailables }) {
       <select
         value={startHour}
         onChange={handleStartHourChange}
-        className="border border-gray-300 px-4 py-2 mt-2 shadow-md"
+        className="border border-gray-300 px-4 py-2 mt-2 shadow-md w-[50%]"
       >
-        <option value="">Inicio</option>
+        <option value="Start">Start</option>
         {generateHourOptions()}
       </select>
 
       <select
         value={endHour}
         onChange={handleEndHourChange}
-        className="border border-gray-300 px-4 py-2 mt-2 shadow-md"
+        className="border border-gray-300 px-4 py-2 mt-2 shadow-md w-[50%]"
       >
-        <option value="">Fin</option>
+        <option value="End">End</option>
         {generateHourOptions()}
       </select>
 
