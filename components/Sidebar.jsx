@@ -39,11 +39,11 @@ export default function Sidebar({ selectedPoint, onRangeAvailableChange }) {
         ) : (
           <div className="text-red-500 font-bold text-center">
             <h3>No ships available</h3>
-            <Link href="/add-ship">
-              <Button variant="contained">Add a new ship</Button>
-            </Link>
           </div>
         )}
+        <Link href="/add-ship" className="flex justify-center">
+          <Button variant="contained">Add a new ship</Button>
+        </Link>
       </div>
       <div className="my-6 md:my-8">
         <PointInfo

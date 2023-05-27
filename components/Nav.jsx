@@ -7,7 +7,6 @@ import { BsFillPersonLinesFill } from "react-icons/bs";
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
 const NavBar = () => {
-  const { user } = useContext(UserContext);
   const [nav, setNav] = useState(false);
   const [shadow, setShadow] = useState(false);
 
