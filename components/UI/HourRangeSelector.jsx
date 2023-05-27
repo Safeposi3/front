@@ -2,17 +2,35 @@ import { useState, useEffect } from "react";
 export default function HourRangeSelector({
   timesAvailables,
   onRangeAvailableChange,
+  setForm,
+  form,
 }) {
   const [startHour, setStartHour] = useState("");
   const [endHour, setEndHour] = useState("");
-
   const handleStartHourChange = (event) => {
     setStartHour(event.target.value);
+    const dateTime = new Date(form.date);
+    const [hours, minutes] = event.target.value.split(":");
+    dateTime.setHours(hours);
+    dateTime.setMinutes(minutes);
+    setForm((prevForm) => ({
+      ...prevForm,
+      start_time: dateTime.toISOString(),
+    }));
   };
 
   const handleEndHourChange = (event) => {
     setEndHour(event.target.value);
+    const dateTime = new Date(form.date);
+    const [hours, minutes] = event.target.value.split(":");
+    dateTime.setHours(hours);
+    dateTime.setMinutes(minutes);
+    setForm((prevForm) => ({
+      ...prevForm,
+      end_time: dateTime.toISOString(),
+    }));
   };
+
   useEffect(() => {
     onRangeAvailableChange(isRangeAvailable());
   }, [startHour, endHour]);

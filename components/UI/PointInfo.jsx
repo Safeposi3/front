@@ -16,10 +16,14 @@ export default function PointInfo({ point, onRangeAvailableChange }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createReservation());
+    console.log(form);
+    dispatch(createReservation(form));
   };
   const handleDateChange = (date) => {
-    setSelectedDate(date);
+    setForm((prevForm) => ({
+      ...prevForm,
+      date: date.toISOString(),
+    }));
   };
   const handleRangeAvailableChange = (available) => {
     setOnRangeAvailable(available);
@@ -37,18 +41,21 @@ export default function PointInfo({ point, onRangeAvailableChange }) {
           <p>ID: {point.id}</p>
           <p>Location: {point.location.join(", ")}</p>
           <p>Size (m): {point.size == "big" ? "10-20" : "4-10"}</p>
-          <h2 className="text-center text-lg mt-1">Select a date:</h2>
-          <DatePicker />
-          <h2 className="text-center text-lg mt-1">Select the time:</h2>
+          <h2 className="text-center text-lg mt-1">Select date:</h2>
+          <DatePicker handleDateChange={handleDateChange} />
+          <h2 className="text-center text-lg mt-1">Select time:</h2>
           <HourRangeSelector
             timesAvailables={point.timesAvailables}
             onRangeAvailableChange={handleRangeAvailableChange}
+            setForm={setForm}
+            form={form}
           />
           <div className="flex justify-center mt-4">
             <Button
               className="mt-4"
               variant="contained"
               disabled={!onRangeAvailable}
+              onClick={handleSubmit}
             >
               Confirm
             </Button>
