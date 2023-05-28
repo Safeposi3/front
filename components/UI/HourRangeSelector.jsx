@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 export default function HourRangeSelector({
-  timesAvailables,
   onRangeAvailableChange,
   setForm,
   form,
@@ -51,23 +50,9 @@ export default function HourRangeSelector({
     if (!startHour || !endHour || startHour === "Start" || endHour === "End") {
       return true;
     }
-    if (startHour && endHour && startHour !== endHour) {
-      const start = startHour;
-      const end = endHour;
 
-      if (start <= end) {
-        const startIdx = timesAvailables.indexOf(start);
-        const endIdx = timesAvailables.indexOf(end);
-
-        if (startIdx !== -1 && endIdx !== -1) {
-          const rangeHours = timesAvailables.slice(startIdx, endIdx + 1);
-          const rangeMatch = rangeHours.length === endIdx - startIdx + 1;
-
-          return rangeMatch;
-        }
-      }
-    }
-    return false;
+    // Compare the start and end hours
+    return startHour < endHour;
   };
 
   return (
@@ -91,9 +76,9 @@ export default function HourRangeSelector({
       </select>
 
       {!isRangeAvailable() && (
-        <p className="text-red-500 mt-2">
-          El rango de horas seleccionado no está disponible, por favor
-          seleccione otro rango de horas.
+        <p className="text-red-500 mt-2 text-sm">
+          The range of time you selected is not valid. Please select a different
+          time range.
         </p>
       )}
     </div>

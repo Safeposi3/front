@@ -1,16 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DatePicker from "./DatePicker";
 import HourRangeSelector from "./HourRangeSelector";
 import Button from "@mui/material/Button";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createReservation } from "@/redux/actions/reservations";
 export default function PointInfo({ point, onRangeAvailableChange }) {
   const dispatch = useDispatch();
   const [selectedDate, setSelectedDate] = useState(null);
+  const { loading, data, error } = useSelector(
+    (state) => state.createReservation
+  );
   const [form, setForm] = useState({
     date: null,
     start_time: null,
     end_time: null,
+    buoy: null,
   });
   const [onRangeAvailable, setOnRangeAvailable] = useState(false);
 
@@ -25,34 +29,46 @@ export default function PointInfo({ point, onRangeAvailableChange }) {
       date: date.toISOString(),
     }));
   };
+  useEffect(() => {
+    if (point) {
+      setForm((prevForm) => ({
+        ...prevForm,
+        buoy: point.id,
+      }));
+    }
+  }, [point]);
   const handleRangeAvailableChange = (available) => {
     setOnRangeAvailable(available);
   };
+  useEffect(() => {
+    if (data) {
+      alert("Reservation created");
+    }
+  }, [data]);
+
   return (
     <div className="bg-gray-100 p-4 rounded-md mx-auto shadow-md w-[80%]">
       {!point ? (
         <div className="text-center mt-4">
-          <h2 className="text-lg font-semibold">Select a Point</h2>
+          <h2 className="text-lg font-semibold">Select a buoy</h2>
           <p>Select a point on the map to view zone information.</p>
         </div>
       ) : (
-        <div className=" px-10">
-          <h2 className="text-center">Buoy Information:</h2>
-          <p>ID: {point.id}</p>
-          <p>Location: {point.location.join(", ")}</p>
-          <p>Size (m): {point.size == "big" ? "10-20" : "4-10"}</p>
+        <div className=" px-5">
+          <h2 className="text-center text-lg">Buoy Information:</h2>
+          <p>Location: {point.latitude + ", " + point.longitude}</p>
+          <p>Size (m): {point.size == "S" ? "4-9" : "10-20"}</p>
           <h2 className="text-center text-lg mt-1">Select date:</h2>
           <DatePicker handleDateChange={handleDateChange} />
           <h2 className="text-center text-lg mt-1">Select time:</h2>
           <HourRangeSelector
-            timesAvailables={point.timesAvailables}
             onRangeAvailableChange={handleRangeAvailableChange}
             setForm={setForm}
             form={form}
           />
           <div className="flex justify-center mt-4">
             <Button
-              className="mt-4"
+              className="mt-2 bg-blue-600"
               variant="contained"
               disabled={!onRangeAvailable}
               onClick={handleSubmit}
@@ -60,6 +76,9 @@ export default function PointInfo({ point, onRangeAvailableChange }) {
               Confirm
             </Button>
           </div>
+          {error && (
+            <p className="text-red-500 mt-2 text-sm">{error.message}</p>
+          )}
         </div>
       )}
     </div>
