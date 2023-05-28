@@ -32,7 +32,6 @@ export default function Sidebar({ selectedPoint, onRangeAvailableChange }) {
                   {ship.ship_registration}
                 </div>
                 <div className="text-sm mb-1">{ship.length}</div>
-                <div className="text-sm text-gray-500">{ship.owner}</div>
               </li>
             ))}
           </ul>
@@ -42,7 +41,13 @@ export default function Sidebar({ selectedPoint, onRangeAvailableChange }) {
           </div>
         )}
         <Link href="/add-ship" className="flex justify-center">
-          <Button variant="contained">Add a new ship</Button>
+          <Button
+            variant="contained"
+            disabled={loadingListShips}
+            className="bg-blue-600"
+          >
+            Add a new ship
+          </Button>
         </Link>
       </div>
       <div className="my-6 md:my-8">

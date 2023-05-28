@@ -13,6 +13,14 @@ import {
   updateReservationReducer,
   deleteReservationReducer,
 } from "./reducer/reservations";
+import {
+  getBuoyReducer,
+  createBuoyReducer,
+  updateBuoyReducer,
+  deleteBuoyReducer,
+  listBuoysReducer,
+} from "./reducer/buoys";
+
 import { LoginReducer, RegisterReducer } from "./reducer/auth";
 // ... add other reducers here
 
@@ -29,8 +37,11 @@ export default configureStore({
     deleteReservation: deleteReservationReducer,
     login: LoginReducer,
     register: RegisterReducer,
-
-    // Add your reducers here
+    getBuoy: getBuoyReducer,
+    createBuoy: createBuoyReducer,
+    updateBuoy: updateBuoyReducer,
+    deleteBuoy: deleteBuoyReducer,
+    listBuoys: listBuoysReducer,
   },
   middleware: [thunk],
 });

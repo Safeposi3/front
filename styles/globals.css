@@ -7,11 +7,6 @@ html {
   scroll-behavior: smooth;
 }
 
-@layer base {
-  body {
-    @apply bg-[#F4f6fc] text-[#1f2937] tracking-wide;
-  }
-}
 
 * {
   font-family: "Inter", sans-serif;
