@@ -1,4 +1,4 @@
-import { MapContainer, Marker, TileLayer, Circle } from "react-leaflet";
+import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import { useEffect, useState } from "react";
 import { Icon } from "leaflet";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,15 +15,17 @@ export default function Map({ onPointClick }) {
   useEffect(() => {
     dispatch(listBuoys());
   }, []);
+  //Icon for buoy selected
   const selectedIcon = new Icon({
     iconUrl: "/blue-dot.png",
     iconSize: [15, 15],
   });
+  //Icon for buoy availables
   const greenIcon = new Icon({
     iconUrl: "/green-dot.png",
     iconSize: [12, 12],
   });
-
+  //Icon for buoy unavailable
   const redIcon = new Icon({
     iconUrl: "/red-dot.png",
     iconSize: [12, 12],
@@ -32,6 +34,7 @@ export default function Map({ onPointClick }) {
     <div
       className="border border-gray-300 rounded-md"
       style={{ height: "90vh", width: "70vw" }}
+      //with this you can modify the size of the map vh is equal to % of viewport
     >
       <MapContainer
         center={tabarcaCoords}

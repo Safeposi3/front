@@ -5,6 +5,7 @@ import "leaflet/dist/leaflet.css";
 import Sidebar from "../components/Sidebar";
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
+import Stripe from "../components/Stripe";
 const { useRouter } = require("next/router");
 
 const MyMap = dynamic(() => import("../components/Map"), {

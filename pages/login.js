@@ -74,7 +74,7 @@ export default function Login() {
             Don't have an account yet?{" "}
             <Link
               className=" text-indigo-600 hover:text-indigo-500"
-              href="/signup"
+              href="/register"
             >
               Sign-Up
             </Link>
