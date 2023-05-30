@@ -3,9 +3,19 @@ export default function HourRangeSelector({
   onRangeAvailableChange,
   setForm,
   form,
+  setTotalHours,
 }) {
   const [startHour, setStartHour] = useState("");
   const [endHour, setEndHour] = useState("");
+  useEffect(() => {
+    setForm((prevForm) => ({
+      ...prevForm,
+      start_time: null,
+      end_time: null,
+    }));
+    setStartHour("Start");
+    setEndHour("End");
+  }, [form.date]);
   const handleStartHourChange = (event) => {
     setStartHour(event.target.value);
     const dateTime = new Date(form.date);
@@ -17,7 +27,6 @@ export default function HourRangeSelector({
       start_time: dateTime.toISOString(),
     }));
   };
-
   const handleEndHourChange = (event) => {
     setEndHour(event.target.value);
     const dateTime = new Date(form.date);
@@ -29,7 +38,12 @@ export default function HourRangeSelector({
       end_time: dateTime.toISOString(),
     }));
   };
-
+  useEffect(() => {
+    const start = new Date(form.start_time);
+    const end = new Date(form.end_time);
+    const diffHours = (end - start) / (1000 * 60 * 60); // Difference in hours
+    setTotalHours(diffHours);
+  }, [form]);
   useEffect(() => {
     onRangeAvailableChange(isRangeAvailable());
   }, [startHour, endHour]);

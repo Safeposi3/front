@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 import { Icon } from "leaflet";
 import { useDispatch, useSelector } from "react-redux";
 import { listBuoys } from "@/redux/actions/buoys";
-export default function Map({ onPointClick }) {
+export default function Map({ onPointClick, selectedShip }) {
   const dispatch = useDispatch();
   const { loading, data, error } = useSelector((state) => state.listBuoys);
+
   const [selectedBuoy, setSelectedBuoy] = useState(null);
   const [tabarcaCoords, setTabarcaCoords] = useState([
     38.16631881567097,

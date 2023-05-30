@@ -6,7 +6,7 @@ const options = {
   todayBtn: false,
   clearBtn: false,
   weekDays: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
-  maxDate: new Date("2023-06-01"),
+  maxDate: new Date("2023-07-01"),
   minDate: new Date("2023-05-01"),
   theme: {
     todayBtn: "",
@@ -22,8 +22,9 @@ const options = {
     prev: () => <span>Prev.</span>,
     next: () => <span>Next.</span>,
   },
+
   datepickerClassNames: "mt-[160%] lg:mt-[24%] lg:ms-3",
-  defaultDate: new Date("2023-05-02"),
+  defaultDate: new Date(),
   language: "en",
 };
 
