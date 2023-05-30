@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   CardNumberElement,
   CardExpiryElement,
@@ -10,7 +10,7 @@ import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import Button from "@mui/material/Button";
 import Swal from "sweetalert2";
-
+import { useRouter } from "next/router";
 const CARD_ELEMENT_OPTIONS = {
   style: {
     base: {
@@ -28,19 +28,24 @@ const CARD_ELEMENT_OPTIONS = {
   },
 };
 
-function CheckoutForm() {
+function CheckoutForm({ amount, reservationId, openStripe }) {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
+  const [cardType, setCardType] = useState("");
   const stripe = useStripe();
   const elements = useElements();
 
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
+  useEffect(() => {
+    if (openStripe[0]) {
+      setOpen(true);
+    }
+  }, [openStripe]);
   const handleClose = () => {
     setOpen(false);
   };
-
+  const handleCardType = (e) => {
+    setCardType(e.brand);
+  };
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!stripe || !elements) {
@@ -53,7 +58,7 @@ function CheckoutForm() {
       type: "card",
       card: cardElement,
     });
-    console.log(paymentMethod);
+
     if (!error) {
       const response = await fetch(
         "http://127.0.0.1:8000/api/create-payment/",
@@ -64,7 +69,8 @@ function CheckoutForm() {
           },
           body: JSON.stringify({
             paymentMethodId: paymentMethod.id,
-            amount: 1000, // amount in cents
+            amount: amount, // amount in cents
+            reservationId: reservationId,
           }),
         }
       );
@@ -73,10 +79,10 @@ function CheckoutForm() {
 
       if (data.client_secret) {
         const confirm = await stripe.confirmCardPayment(data.client_secret);
-
         try {
           if (confirm.paymentIntent.status === "succeeded") {
             Swal.fire("Success!", "Payment confirmed!", "success");
+            //router.push("/");
           } else {
             Swal.fire("Error!", "Payment failed!", "error");
           }
@@ -114,11 +120,15 @@ function CheckoutForm() {
 
   return (
     <div>
-      <Button variant="contained" color="primary" onClick={handleOpen}>
-        Pay Now
-      </Button>
       <Dialog open={open} onClose={handleClose} fullWidth={true}>
-        <DialogContent className="max-w  bg-white shadow-md overflow-hidden p-0">
+        <DialogContent className="max-w bg-white shadow-md overflow-hidden p-0 relative">
+          {cardType && (
+            <img
+              src={`/${cardType.toLowerCase()}-logo.png`}
+              alt={cardType}
+              className="card-type-logo"
+            />
+          )}
           <div className="px-6 py-4 bg-gray-900 text-white">
             <h1 className="text-lg font-bold">Credit Card</h1>
           </div>
@@ -129,17 +139,19 @@ function CheckoutForm() {
             >
               Card Number
             </label>
+
             <div className="mb-4 border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
               <CardNumberElement
                 options={CARD_ELEMENT_OPTIONS}
                 id="cardNumber"
+                onChange={handleCardType}
               />
             </div>
 
             <div className="mb-4">
               <label
                 className="block text-gray-700 font-bold mb-2"
-                for="expiration-date"
+                htmlFor="expiration-date"
               >
                 Expiration Date
               </label>
@@ -149,7 +161,10 @@ function CheckoutForm() {
             </div>
 
             <div className="mb-4">
-              <label className="block text-gray-700 font-bold mb-2" for="cvv">
+              <label
+                className="block text-gray-700 font-bold mb-2"
+                htmlFor="cvv"
+              >
                 CVV
               </label>
               <div className="appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">

@@ -4,14 +4,14 @@ import HourRangeSelector from "./HourRangeSelector";
 import Button from "@mui/material/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { createReservation } from "@/redux/actions/reservations";
-export default function PointInfo({ point, onRangeAvailableChange }) {
+export default function PointInfo({ point, setOpenStripe, setAmount }) {
   const dispatch = useDispatch();
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [totalPrice, setTotalPrice] = useState(0);
   const { loading, data, error } = useSelector(
     (state) => state.createReservation
   );
   const [form, setForm] = useState({
-    date: null,
+    date: new Date().toISOString(),
     start_time: null,
     end_time: null,
     buoy: null,
@@ -20,7 +20,6 @@ export default function PointInfo({ point, onRangeAvailableChange }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(form);
     dispatch(createReservation(form));
   };
   const handleDateChange = (date) => {
@@ -42,10 +41,14 @@ export default function PointInfo({ point, onRangeAvailableChange }) {
   };
   useEffect(() => {
     if (data) {
-      alert("Reservation created");
+      setOpenStripe([true, data?.id]);
     }
   }, [data]);
 
+  const handleAmountChange = (totalHours) => {
+    setAmount((totalHours * point.price1).toFixed(2) * 100);
+    setTotalPrice((totalHours * point.price1).toFixed(2));
+  };
   return (
     <div className="bg-gray-100 p-4 rounded-md mx-auto shadow-md w-[80%]">
       {!point ? (
@@ -57,7 +60,8 @@ export default function PointInfo({ point, onRangeAvailableChange }) {
         <div className=" px-5">
           <h2 className="text-center text-lg">Buoy Information:</h2>
           <p>Location: {point.latitude + ", " + point.longitude}</p>
-          <p>Size (m): {point.size == "S" ? "4-9" : "10-20"}</p>
+          <p>Size: {point.size == "S" ? "4-9 m." : "10-20 m."}</p>
+          <p>Price per hour: €{point.price1}</p>
           <h2 className="text-center text-lg mt-1">Select date:</h2>
           <DatePicker handleDateChange={handleDateChange} />
           <h2 className="text-center text-lg mt-1">Select time:</h2>
@@ -65,19 +69,25 @@ export default function PointInfo({ point, onRangeAvailableChange }) {
             onRangeAvailableChange={handleRangeAvailableChange}
             setForm={setForm}
             form={form}
+            setTotalHours={handleAmountChange}
           />
-          <div className="flex justify-center mt-4">
+          {totalPrice > 0 && (
+            <p className="text-center text-lg mt-1">
+              Total price: €{totalPrice}
+            </p>
+          )}
+          <div className="flex justify-center mt-3">
             <Button
-              className="mt-2 bg-blue-600"
+              className=" bg-blue-600"
               variant="contained"
               disabled={!onRangeAvailable}
               onClick={handleSubmit}
             >
-              Confirm
+              Pay Now
             </Button>
           </div>
           {error && (
-            <p className="text-red-500 mt-2 text-sm">{error.message}</p>
+            <p className="text-red-500 mt-2 text-sm">{error?.response.data}</p>
           )}
         </div>
       )}

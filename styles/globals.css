@@ -49,3 +49,11 @@ html {
   display: block;
   width: 100%;
 }
+.card-type-logo {
+  position: absolute;
+  top: 60px;
+  right: 50px;
+  height: 45px;
+  width: auto;
+  background-color: white;
+}
