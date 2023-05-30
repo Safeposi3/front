@@ -52,7 +52,7 @@ export default function Sidebar({
                     type="radio"
                     name="ship"
                     value={ship.id}
-                    checked={selectedShip.id === ship.id}
+                    checked={selectedShip?.id === ship.id}
                     onChange={handleShipChange(ship)}
                     className="rounded-full border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                   />

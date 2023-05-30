@@ -6,7 +6,11 @@ const BASE_URL = "http://127.0.0.1:8000/api";
 export const getUserInfo = () => async (dispatch) => {
   try {
     dispatch({ type: u.GET_USER_INFO_REQUEST });
-    const { data } = await axios.get(`${BASE_URL}/users/`);
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+    };
+    const { data } = await axios.get(`${BASE_URL}/users/`, { headers });
     dispatch({ type: u.GET_USER_INFO_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: u.GET_USER_INFO_FAILURE, payload: error });
@@ -16,7 +20,13 @@ export const getUserInfo = () => async (dispatch) => {
 export const updateUserInfo = (userData) => async (dispatch) => {
   try {
     dispatch({ type: u.UPDATE_USER_INFO_REQUEST });
-    const { data } = await axios.put(`${BASE_URL}/users/`, userData);
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+    };
+    const { data } = await axios.put(`${BASE_URL}/users/`, userData, {
+      headers,
+    });
     dispatch({ type: u.UPDATE_USER_INFO_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: u.UPDATE_USER_INFO_FAILURE, payload: error });
