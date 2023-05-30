@@ -21,6 +21,8 @@ import {
   listBuoysReducer,
 } from "./reducer/buoys";
 
+import { userInfoReducer, userUpdateReducer } from "./reducer/user";
+
 import { LoginReducer, RegisterReducer } from "./reducer/auth";
 // ... add other reducers here
 
@@ -42,6 +44,8 @@ export default configureStore({
     updateBuoy: updateBuoyReducer,
     deleteBuoy: deleteBuoyReducer,
     listBuoys: listBuoysReducer,
+    getUserInfo: userInfoReducer,
+    updateUserInfo: userUpdateReducer,
   },
   middleware: [thunk],
 });
