@@ -1,8 +1,7 @@
 import axios from "axios";
 import * as u from "../../constants/reservations";
 
-const BASE_URL = "http://127.0.0.1:8000/api";
-
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 export const getReservations = (id) => async (dispatch) => {
   try {
     dispatch({ type: u.GET_RESERVATION_REQUEST });

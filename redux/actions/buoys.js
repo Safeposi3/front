@@ -1,7 +1,6 @@
 import axios from "axios";
 import * as a from "../../constants/buoys";
-const BASE_URL = "http://127.0.0.1:8000/api";
-
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 export const listBuoys = () => async (dispatch) => {
   try {
     dispatch({ type: a.LIST_BUOYS_REQUEST });

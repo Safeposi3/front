@@ -1,8 +1,7 @@
 import axios from "axios";
 import * as u from "../../constants/ships";
-import { headers } from "next/dist/client/components/headers";
 
-const BASE_URL = "http://127.0.0.1:8000/api";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const getShip = (id) => async (dispatch) => {
   try {

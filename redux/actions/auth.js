@@ -1,7 +1,6 @@
 import axios from "axios";
 import * as a from "../../constants/auth";
-const BASE_URL = "http://127.0.0.1:8000/api";
-
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 export const login = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: a.LOGIN_REQUEST });
