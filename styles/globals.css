@@ -7,12 +7,9 @@ html {
   scroll-behavior: smooth;
 }
 
-@layer base {
-  body {
-    @apply bg-[#F4f6fc] text-[#1f2937] tracking-wide;
-  }
+.swal2-container {
+  z-index: 9999 !important; /* Adjust the z-index value as needed */
 }
-
 * {
   font-family: "Inter", sans-serif;
   line-height: 1.5;
@@ -51,4 +48,12 @@ html {
 .react-datepicker__input-container input {
   display: block;
   width: 100%;
+}
+.card-type-logo {
+  position: absolute;
+  top: 80px;
+  right: 50px;
+  height: 45px;
+  width: auto;
+  background-color: white;
 }
