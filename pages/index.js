@@ -1,13 +1,7 @@
 import React from "react";
 import Nav from "../components/Nav";
-
 import Image from "next/image";
-
-import { AiOutlineMail } from "react-icons/ai";
-import { BsFillPersonLinesFill } from "react-icons/bs";
-import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import Footer from "@/components/Footer";
-import { useSelector } from "react-redux";
 
 export default function Home() {
   return (
@@ -196,6 +190,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
