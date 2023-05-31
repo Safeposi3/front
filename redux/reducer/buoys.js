@@ -1,16 +1,16 @@
-import * as u from "../../constants/ships";
+import * as u from "../../constants/buoys";
 
-export const getShipReducer = (state = {}, action) => {
+export const getBuoyReducer = (state = {}, action) => {
   switch (action.type) {
-    case u.GET_SHIP_REQUEST:
+    case u.GET_BUOY_REQUEST:
       return {
         loading: true,
       };
-    case u.GET_SHIP_SUCCESS:
+    case u.GET_BUOY_SUCCESS:
       return {
         data: { ...action.payload },
       };
-    case u.GET_SHIP_FAILURE:
+    case u.GET_BUOY_FAILURE:
       return {
         error: action.payload,
       };
@@ -19,17 +19,17 @@ export const getShipReducer = (state = {}, action) => {
   }
 };
 
-export const createShipReducer = (state = {}, action) => {
+export const createBuoyReducer = (state = {}, action) => {
   switch (action.type) {
-    case u.CREATE_SHIP_REQUEST:
+    case u.CREATE_BUOY_REQUEST:
       return {
         loading: true,
       };
-    case u.CREATE_SHIP_SUCCESS:
+    case u.CREATE_BUOY_SUCCESS:
       return {
         data: { ...action.payload },
       };
-    case u.CREATE_SHIP_FAILURE:
+    case u.CREATE_BUOY_FAILURE:
       return {
         error: action.payload,
       };
@@ -38,17 +38,17 @@ export const createShipReducer = (state = {}, action) => {
   }
 };
 
-export const updateShipReducer = (state = {}, action) => {
+export const updateBuoyReducer = (state = {}, action) => {
   switch (action.type) {
-    case u.UPDATE_SHIP_REQUEST:
+    case u.UPDATE_BUOY_REQUEST:
       return {
         loading: true,
       };
-    case u.UPDATE_SHIP_SUCCESS:
+    case u.UPDATE_BUOY_SUCCESS:
       return {
         data: { ...action.payload },
       };
-    case u.UPDATE_SHIP_FAILURE:
+    case u.UPDATE_BUOY_FAILURE:
       return {
         error: action.payload,
       };
@@ -57,17 +57,17 @@ export const updateShipReducer = (state = {}, action) => {
   }
 };
 
-export const deleteShipReducer = (state = {}, action) => {
+export const deleteBuoyReducer = (state = {}, action) => {
   switch (action.type) {
-    case u.DELETE_SHIP_REQUEST:
+    case u.DELETE_BUOY_REQUEST:
       return {
         loading: true,
       };
-    case u.DELETE_SHIP_SUCCESS:
+    case u.DELETE_BUOY_SUCCESS:
       return {
         data: { ...action.payload },
       };
-    case u.DELETE_SHIP_FAILURE:
+    case u.DELETE_BUOY_FAILURE:
       return {
         error: action.payload,
       };
@@ -76,17 +76,17 @@ export const deleteShipReducer = (state = {}, action) => {
   }
 };
 
-export const listShipsReducer = (state = {}, action) => {
+export const listBuoysReducer = (state = {}, action) => {
   switch (action.type) {
-    case u.LIST_SHIPS_REQUEST:
+    case u.LIST_BUOYS_REQUEST:
       return {
         loading: true,
       };
-    case u.LIST_SHIPS_SUCCESS:
+    case u.LIST_BUOYS_SUCCESS:
       return {
         data: [...action.payload],
       };
-    case u.LIST_SHIPS_FAILURE:
+    case u.LIST_BUOYS_FAILURE:
       return {
         error: action.payload,
       };
