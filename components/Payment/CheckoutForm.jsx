@@ -11,6 +11,7 @@ import DialogContent from "@mui/material/DialogContent";
 import Button from "@mui/material/Button";
 import Swal from "sweetalert2";
 import { useRouter } from "next/router";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const CARD_ELEMENT_OPTIONS = {
   style: {
     base: {
@@ -60,20 +61,17 @@ function CheckoutForm({ amount, reservationId, openStripe }) {
     });
 
     if (!error) {
-      const response = await fetch(
-        "http://127.0.0.1:8000/api/create-payment/",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            paymentMethodId: paymentMethod.id,
-            amount: amount, // amount in cents
-            reservationId: reservationId,
-          }),
-        }
-      );
+      const response = await fetch(`${BASE_URL}/create-payment/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          paymentMethodId: paymentMethod.id,
+          amount: amount, // amount in cents
+          reservationId: reservationId,
+        }),
+      });
 
       const data = await response.json();
 
