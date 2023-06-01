@@ -19,7 +19,7 @@ const Header = ({ title }) => {
     <div className="flex justify-between px-4 pt-4">
       <h2>{title}</h2>
 
-      <h2>Welcome Back, {userData.first_name}</h2>
+      <h2>Welcome, {userData.first_name}</h2>
     </div>
   );
 };
