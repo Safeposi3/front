@@ -6,9 +6,7 @@ export default function SearchBar() {
   const [search, setSearch] = useState("");
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
-  const handleChange = (selectedDate) => {
-    console.log(selectedDate);
-  };
+  const handleChange = (selectedDate) => {};
   const handleClose = (state) => {
     setShow(state);
   };

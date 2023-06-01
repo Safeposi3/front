@@ -3,16 +3,17 @@ import { useRouter } from "next/router";
 import { UserContext } from "@/context/UserContext";
 const Header = ({ title }) => {
   const router = useRouter();
-  const { user } = useContext(UserContext);
-  const { token } = useContext(UserContext);
+  const { user, token } = useContext(UserContext);
   const [userData, setUserData] = useState({});
 
   useEffect(() => {
     setUserData(user);
   }, [user]);
-  if (!token) {
-    router.push("/login");
-  }
+  useEffect(() => {
+    if (token == "") {
+      router.push("/login");
+    }
+  }, [token]);
 
   return (
     <div className="flex justify-between px-4 pt-4">

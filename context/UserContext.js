@@ -24,7 +24,7 @@ export const UserProvider = ({ children }) => {
       });
     }
   }, [data, dataRegister]);
-  console.log(loggedIn);
+
   return (
     <UserContext.Provider value={loggedIn}>{children}</UserContext.Provider>
   );
