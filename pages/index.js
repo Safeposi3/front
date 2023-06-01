@@ -2,7 +2,7 @@ import React from "react";
 import Nav from "../components/Nav";
 import Image from "next/image";
 import Footer from "@/components/Footer";
-
+import Link from "next/link";
 export default function Home() {
   return (
     <div>
@@ -18,9 +18,11 @@ export default function Home() {
               have a fantastic day at sea while helping preserve the marine
               ecosystem, Don't think twice!
             </p>
-            <button className="bg-black text-white text-lg px-5 py-3 my-6 rounded-lg">
-              Book Now
-            </button>
+            <Link href="/dashboard">
+              <button className="bg-black text-white text-lg px-5 py-3 my-6 rounded-lg">
+                Book Now
+              </button>
+            </Link>
           </div>
         </div>
       </div>

@@ -9,7 +9,6 @@ import { UserContext } from "../context/UserContext";
 import Swal from "sweetalert2";
 export default function Register() {
   const useAuth = useContext(UserContext);
-
   const router = useRouter();
   const dispatch = useDispatch();
   const {
@@ -24,7 +23,7 @@ export default function Register() {
     password: "",
     confirmPassword: "",
     fullName: "",
-    birthdate: "",
+    birthdate: "1973-01-01",
     phoneNumber: "",
     country: "",
     address: "",
@@ -284,7 +283,7 @@ export default function Register() {
                   id="birthdate"
                   name="birthdate"
                   type="date"
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  className="  rounded-none relative block w-full px-3 py-2 border bg-white border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Birthdate"
                   value={form.birthdate}
                   onChange={handleChange}

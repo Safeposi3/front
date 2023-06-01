@@ -120,7 +120,7 @@ const NavBar = () => {
               </Link>
               <Link href="/#skills">
                 <li onClick={() => setNav(false)} className="py-4 text-sm">
-                  Contanct us
+                  Contact us
                 </li>
               </Link>
               <Link href="/login">
@@ -128,7 +128,7 @@ const NavBar = () => {
                   Login
                 </li>
               </Link>
-              <Link href="/#contact">
+              <Link href="/register">
                 <li onClick={() => setNav(false)} className="py-4 text-sm">
                   Register
                 </li>
