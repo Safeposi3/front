@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../redux/actions/auth";
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
-
+import Swal from "sweetalert2";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -32,7 +32,7 @@ export default function Login() {
     return true;
   };
   useEffect(() => {
-    if (useAuth) {
+    if (useAuth.token) {
       router.push("/dashboard");
     }
   }, [useAuth]);
@@ -41,7 +41,13 @@ export default function Login() {
   }, [email, password]);
   useEffect(() => {
     if (dataLogin) {
-      router.push("/dashboard");
+      Swal.fire({
+        icon: "success",
+        title: "Login successful",
+      }).then(() => {
+        dispatch({ type: "LOGIN_RESET" });
+        router.push("/dashboard");
+      });
     }
   }, [dataLogin]);
   useEffect(() => {

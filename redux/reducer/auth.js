@@ -14,6 +14,8 @@ export const LoginReducer = (state = {}, action) => {
       return {
         error: action.payload,
       };
+    case u.LOGIN_RESET:
+      return {};
     default:
       return state;
   }
@@ -33,6 +35,8 @@ export const RegisterReducer = (state = {}, action) => {
       return {
         error: action.payload,
       };
+    case u.REGISTER_RESET:
+      return {};
     default:
       return state;
   }

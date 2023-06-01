@@ -33,6 +33,8 @@ export const createReservationReducer = (state = {}, action) => {
       return {
         error: action.payload,
       };
+    case u.CREATE_RESERVATION_RESET:
+      return {};
     default:
       return state;
   }

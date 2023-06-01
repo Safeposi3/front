@@ -22,7 +22,6 @@ export const createShip = (shipData) => async (dispatch) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${sessionStorage.getItem("token")}`,
     };
-    console.log(shipData);
     const { data } = await axios.post(`${BASE_URL}/ships/`, shipData, {
       headers,
     });
@@ -53,7 +52,9 @@ export const deleteShip = (id) => async (dispatch) => {
       Authorization: `Bearer ${sessionStorage.getItem("token")}`,
     };
 
-    const { data } = await axios.delete(`${BASE_URL}/ships/${id}/`);
+    const { data } = await axios.delete(`${BASE_URL}/ships/${id}/`, {
+      headers,
+    });
     dispatch({ type: u.DELETE_SHIP_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: u.DELETE_SHIP_FAILURE, payload: error });

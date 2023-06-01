@@ -33,6 +33,8 @@ export const createShipReducer = (state = {}, action) => {
       return {
         error: action.payload,
       };
+    case u.CREATE_SHIP_RESET:
+      return {};
     default:
       return state;
   }
@@ -71,6 +73,8 @@ export const deleteShipReducer = (state = {}, action) => {
       return {
         error: action.payload,
       };
+    case u.DELETE_SHIP_RESET:
+      return {};
     default:
       return state;
   }

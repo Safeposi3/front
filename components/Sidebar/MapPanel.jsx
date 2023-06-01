@@ -42,16 +42,15 @@ export default function MapPanel({
         {dataListShips && dataListShips.length > 0 ? (
           <div className="px-5 my-2 w-full">
             {dataListShips.map((ship) => (
-              <div className="flex items-center w-full cursor-pointer">
-                <label
-                  key={ship.id}
-                  className="flex w-full items-center space-x-4 cursor-pointer"
-                >
+              <div
+                key={ship.id}
+                className="flex items-center w-full cursor-pointer"
+              >
+                <label className="flex w-full items-center space-x-4 cursor-pointer">
                   <input
                     type="radio"
                     name="ship"
                     value={ship.id}
-                    checked={selectedShip?.id === ship.id}
                     onChange={handleShipChange(ship)}
                     className="rounded-full border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                   />

@@ -10,7 +10,8 @@ export default function Map({ onPointClick, selectedShip }) {
 
   const [selectedBuoy, setSelectedBuoy] = useState(null);
   const [tabarcaCoords, setTabarcaCoords] = useState([
-    38.16631881567097, -0.4794345305520023,
+    38.16631881567097,
+    -0.4794345305520023,
   ]);
 
   useEffect(() => {
@@ -47,7 +48,7 @@ export default function Map({ onPointClick, selectedShip }) {
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         {data?.map((item) => (
-          <>
+          <div key={item.id}>
             <Marker
               key={item.id}
               position={{ lat: item.latitude, lng: item.longitude }}
@@ -65,7 +66,7 @@ export default function Map({ onPointClick, selectedShip }) {
                 },
               }}
             ></Marker>
-          </>
+          </div>
         ))}
       </MapContainer>
     </div>

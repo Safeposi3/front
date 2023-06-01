@@ -11,6 +11,7 @@ export const login = (email, password) => async (dispatch) => {
 
     const { data } = await axios.post(`${BASE_URL}/login/`, payload);
     sessionStorage.setItem("token", data.token);
+    sessionStorage.setItem("user", JSON.stringify(data.user_info));
     dispatch({ type: a.LOGIN_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: a.LOGIN_FAILURE, payload: error?.message });
@@ -42,9 +43,11 @@ export const register = (form) => async (dispatch) => {
       address: form.address,
       postal_code: form.postalCode,
       city: form.city,
+      dni: form.dni,
     };
     const { data } = await axios.post(`${BASE_URL}/register/`, payload);
     sessionStorage.setItem("token", data.token);
+    sessionStorage.setItem("user", JSON.stringify(data.user_info));
     dispatch({ type: a.REGISTER_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: a.REGISTER_FAILURE, payload: error });

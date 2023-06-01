@@ -42,6 +42,7 @@ export default function PointInfo({ point, setOpenStripe, setAmount }) {
   useEffect(() => {
     if (data) {
       setOpenStripe([true, data?.id]);
+      dispatch({ type: "CREATE_RESERVATION_RESET" });
     }
   }, [data]);
 

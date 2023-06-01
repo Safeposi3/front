@@ -11,6 +11,7 @@ import DialogContent from "@mui/material/DialogContent";
 import Button from "@mui/material/Button";
 import Swal from "sweetalert2";
 import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
 const BASE_URL = "https://oceanbluereef.pythonanywhere.com/api";
 const CARD_ELEMENT_OPTIONS = {
   style: {
@@ -31,6 +32,7 @@ const CARD_ELEMENT_OPTIONS = {
 
 function CheckoutForm({ amount, reservationId, openStripe }) {
   const router = useRouter();
+  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [cardType, setCardType] = useState("");
   const stripe = useStripe();
@@ -52,14 +54,12 @@ function CheckoutForm({ amount, reservationId, openStripe }) {
     if (!stripe || !elements) {
       return;
     }
-
     const cardElement = elements.getElement(CardNumberElement);
 
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card: cardElement,
     });
-
     if (!error) {
       const response = await fetch(`${BASE_URL}/create-payment/`, {
         method: "POST",
@@ -79,8 +79,16 @@ function CheckoutForm({ amount, reservationId, openStripe }) {
         const confirm = await stripe.confirmCardPayment(data.client_secret);
         try {
           if (confirm.paymentIntent.status === "succeeded") {
-            Swal.fire("Success!", "Payment confirmed!", "success");
-            //router.push("/");
+            Swal.fire({
+              icon: "success",
+              title: "Success!",
+              text: "Payment successful.",
+              customClass: {
+                container: "sweetalert-container",
+              },
+            }).then(() => {
+              router.push("/my-reservations");
+            });
           } else {
             Swal.fire("Error!", "Payment failed!", "error");
           }

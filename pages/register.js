@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { register } from "../redux/actions/auth";
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
+import Swal from "sweetalert2";
 export default function Register() {
   const useAuth = useContext(UserContext);
 
@@ -29,6 +30,7 @@ export default function Register() {
     address: "",
     postalCode: "",
     city: "",
+    dni: "",
   });
   useEffect(() => {
     if (useAuth) {
@@ -118,8 +120,16 @@ export default function Register() {
   };
   useEffect(() => {
     if (dataRegister) {
-      alert("Registro exitoso");
-      router.push("/dashboard");
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Account created",
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(() => {
+        dispatch({ type: "REGISTER_RESET" });
+        router.push("/dashboard");
+      });
     }
   }, [dataRegister]);
   const handleSubmit = (e) => {
@@ -128,13 +138,17 @@ export default function Register() {
       if (step === 4) {
         // Submit the form
         // Add your logic here
+
         dispatch(register(form));
       } else {
         setStep(step + 1);
       }
     } else {
-      alert("Complete todos los campos");
-      console.log(errors);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please fill the form correctly",
+      });
     }
   };
 
@@ -169,7 +183,8 @@ export default function Register() {
               !form.country ||
               !form.address ||
               !form.postalCode ||
-              !form.city
+              !form.city ||
+              !form.dni
             }
             onClick={handleSubmit}
           >
@@ -280,6 +295,15 @@ export default function Register() {
                   onKeyDown={handleKeyDown}
                 />
                 <input
+                  id="dni"
+                  name="dni"
+                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  placeholder="DNI"
+                  value={form.dni}
+                  onChange={handleChange}
+                  onKeyDown={handleKeyDown}
+                />
+                <input
                   id="phoneNumber"
                   name="phoneNumber"
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
@@ -290,6 +314,7 @@ export default function Register() {
                 />
               </>
             )}
+
             {step === 4 && (
               <>
                 <input
