@@ -8,14 +8,14 @@ import Image from "next/image";
 const Sidebar = ({ children }) => {
   return (
     <div className="flex">
-      <div className="fixed w-20 h-screen p-4 bg-white border-r-[1px] flex flex-col justify-between">
+      <div className="fixed w-14 md:w-20 h-screen p-4 bg-white border-r-[1px] flex flex-col justify-between">
         <div className="flex flex-col items-center">
           <Link href="/dashboard">
             <Image
-              className="cursor-pointer"
-              src="/../public/logo.png"
+              className="cursor-pointer rounded-lg"
+              src="/OBR_logoAzul.png"
               alt="/"
-              width={35}
+              width={70}
               height={70}
             />
           </Link>
@@ -44,7 +44,7 @@ const Sidebar = ({ children }) => {
           </Link>
         </div>
       </div>
-      <main className="ml-20 w-full">{children}</main>
+      <main className="ml-14 md:ml-20 w-full">{children}</main>
     </div>
   );
 };

@@ -36,7 +36,7 @@ export default function Dashboard() {
   return (
     <Sidebar>
       <main className="bg-gray-100 min-h-screen">
-        <Header />
+        <Header title="Dashboard" />
         <div className="p-4 grid grid-cols-1 lg:grid-cols-4 gap-0 lg:gap-4">
           <div className="w-full md:col-span-1 relative h-full border rounded-lg bg-white">
             <MapPanel
@@ -47,7 +47,7 @@ export default function Dashboard() {
               selectedShip={selectedShip}
             />
           </div>
-          <div className="w-full col-span-3 h-[85vh] m-auto p-4 border rounded-lg bg-white mt-3 lg:mt-0">
+          <div className="w-full col-span-3 h-full mt-3 lg:mt-0">
             {openStripe[0] && (
               <Stripe
                 amount={amount}

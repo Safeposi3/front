@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div>
       <Nav />
-      <div className="w-full bg-[url('../public/mainBg.webp')] bg-right-top bg-no-repeat bg-cover sm:h-screen">
+      <div className="w-full bg-[url('/image-header.jpg')] bg-center bg-no-repeat bg-cover sm:h-screen">
         <div className="max-w-[1240px] w-full h-full mx-auto grid grid-cols-1 gap-4 items-center sm:grid-cols-2 sm:pt-40 sm:pb-20">
           <div className="bg-white p-5 pt-32 sm:pt-5 lg:p-20">
             <h1 className="font-bold text-4xl">
@@ -52,12 +52,7 @@ export default function Home() {
             </p>
           </div>
           <div className="w-full h-auto m-auto flex justify-center items-center p-4 hover:scale-105 ease-in duration-300">
-            <Image
-              src="/../public/aboutUS.webp"
-              alt="/"
-              width={698}
-              height={465}
-            />
+            <Image src="/image-about.jpeg" alt="/" width={698} height={465} />
           </div>
         </div>
       </div>
@@ -65,7 +60,7 @@ export default function Home() {
       {/* prices section */}
       <div className="w-full flex flex-wrap-reverse items-center">
         <div className="m-auto md:grid grid-cols-2">
-          <div className="bg-[url('../public/prices.webp')] bg-center bg-no-repeat bg-cover h-60 sm:h-72 md:h-auto"></div>
+          <div className="bg-[url('/image-prices.JPG')] bg-center bg-no-repeat bg-cover h-60 sm:h-72 md:h-auto"></div>
 
           <div className="bg-[#cee4ea] p-5 lg:p-16">
             <p className="uppercase text-xl tracking-widest text-[#5651e5]">
