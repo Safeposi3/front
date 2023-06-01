@@ -40,12 +40,12 @@ export default function MapPanel({
       <div className="bg-gray-100 rounded-lg shadow-md px-0 py-3 w-full">
         <h2 className="font-bold text-xl text-center">Ships availables:</h2>
         {dataListShips && dataListShips.length > 0 ? (
-          <div className="space-y-4">
+          <div className="px-5 my-2 w-full">
             {dataListShips.map((ship) => (
-              <div className="flex items-center space-x-4 cursor-pointer">
+              <div className="flex items-center w-full cursor-pointer">
                 <label
                   key={ship.id}
-                  className="flex items-center space-x-4 cursor-pointer"
+                  className="flex w-full items-center space-x-4 cursor-pointer"
                 >
                   <input
                     type="radio"
@@ -55,11 +55,11 @@ export default function MapPanel({
                     onChange={handleShipChange(ship)}
                     className="rounded-full border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                   />
-                  <div>
-                    <div className="font-bold text-lg mb-2">
+                  <div className="flex justify-between items-center w-full">
+                    <div className="font-bold text-md">
                       {ship.ship_registration}
                     </div>
-                    <div className="text-sm mb-1">{ship.length}</div>
+                    <div className="text-md">{ship.length} m</div>
                   </div>
                 </label>
               </div>
@@ -71,7 +71,7 @@ export default function MapPanel({
           </div>
         )}
         <div className="flex justify-center">
-          <Link href="/add-ship" className="mx-auto">
+          <Link href="/my-ships" className="mx-auto">
             <Button
               variant="contained"
               disabled={loadingListShips}

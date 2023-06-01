@@ -4,6 +4,7 @@ import { getUserInfo, updateUserInfo } from "@/redux/actions/user";
 import Swal from "sweetalert2";
 import { FaRegEdit } from "react-icons/fa";
 import { isEqual } from "lodash";
+import Sidebar from "@/components/Dashboard/Sidebar";
 function Account() {
   const [editMode, setEditMode] = useState(false);
   const [errors, setErrors] = useState({});
@@ -132,154 +133,156 @@ function Account() {
     return Object.keys(newErrors).length === 0;
   };
 
-  if (loadingUserInfo) return "Loading...";
+  // if (loadingUserInfo) return "Loading...";
   if (errorUserInfo)
     return <div>Error:{errorUserInfo.response.statusText}</div>;
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <div className="relative flex flex-col bg-white rounded-lg shadow-md p-6 w-1/2">
-        <div className="absolute right-0 top-0 m-4">
-          {!editMode && (
-            <button
-              onClick={handleEditClick}
-              className="text-blue-500 hover:text-blue-700"
-            >
-              <FaRegEdit size={25} />
-            </button>
-          )}
-        </div>
-        <h1 className="text-2xl font-bold mb-4">Account</h1>
-        <form onSubmit={handleSubmit}>
-          {/* Repeat for each input field */}
-          <label className="block mt-4">
-            <span className="text-gray-700">First Name</span>
-            <input
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-              type="text"
-              name="first_name"
-              value={formData.first_name}
-              onChange={handleChange}
-              disabled={!editMode}
-            />
-          </label>
-          <label className="block mt-4">
-            <span className="text-gray-700">Last Name</span>
-            <input
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-              type="text"
-              name="last_name"
-              value={formData.last_name}
-              onChange={handleChange}
-              disabled={!editMode}
-            />
-          </label>
-          <label className="block mt-4">
-            <span className="text-gray-700">Email</span>
-            <input
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              disabled={!editMode}
-            />
-          </label>
-          <label className="block mt-4">
-            <span className="text-gray-700">Birthdate</span>
-            <input
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-              type="date"
-              name="birthdate"
-              value={formData.birthdate}
-              onChange={handleChange}
-              disabled={!editMode}
-            />
-          </label>
-          <label className="block mt-4">
-            <span className="text-gray-700">Phone Number</span>
-            <input
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-              type="text"
-              name="phonenumber"
-              value={formData.phonenumber}
-              onChange={handleChange}
-              disabled={!editMode}
-            />
-          </label>
-          <label className="block mt-4">
-            <span className="text-gray-700">Country</span>
-            <input
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-              type="text"
-              name="country"
-              value={formData.country}
-              onChange={handleChange}
-              disabled={!editMode}
-            />
-          </label>
-          <label className="block mt-4">
-            <span className="text-gray-700">Address</span>
-            <input
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-              type="text"
-              name="address"
-              value={formData.address}
-              onChange={handleChange}
-              disabled={!editMode}
-            />
-          </label>
-          <label className="block mt-4">
-            <span className="text-gray-700">Postal Code</span>
-            <input
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-              type="text"
-              name="postal_code"
-              value={formData.postal_code}
-              onChange={handleChange}
-              disabled={!editMode}
-            />
-          </label>
-          <label className="block mt-4">
-            <span className="text-gray-700">City</span>
-            <input
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-              type="text"
-              name="city"
-              value={formData.city}
-              onChange={handleChange}
-              disabled={!editMode}
-            />
-          </label>
-          <label className="block mt-4">
-            <span className="text-gray-700">DNI</span>
-            <input
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-              type="text"
-              name="dni"
-              value={formData.dni}
-              onChange={handleChange}
-              disabled={!editMode}
-            />
-          </label>
+    <Sidebar>
+      <div className="flex flex-col items-center justify-center min-h-screen py-2">
+        <div className="relative flex flex-col bg-white rounded-lg shadow-md p-6 w-1/2">
+          <div className="absolute right-0 top-0 m-4">
+            {!editMode && (
+              <button
+                onClick={handleEditClick}
+                className="text-blue-500 hover:text-blue-700"
+              >
+                <FaRegEdit size={25} />
+              </button>
+            )}
+          </div>
+          <h1 className="text-2xl font-bold mb-4">Account</h1>
+          <form onSubmit={handleSubmit}>
+            {/* Repeat for each input field */}
+            <label className="block mt-4">
+              <span className="text-gray-700">First Name</span>
+              <input
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                type="text"
+                name="first_name"
+                value={formData.first_name}
+                onChange={handleChange}
+                disabled={!editMode}
+              />
+            </label>
+            <label className="block mt-4">
+              <span className="text-gray-700">Last Name</span>
+              <input
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                type="text"
+                name="last_name"
+                value={formData.last_name}
+                onChange={handleChange}
+                disabled={!editMode}
+              />
+            </label>
+            <label className="block mt-4">
+              <span className="text-gray-700">Email</span>
+              <input
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                disabled={!editMode}
+              />
+            </label>
+            <label className="block mt-4">
+              <span className="text-gray-700">Birthdate</span>
+              <input
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                type="date"
+                name="birthdate"
+                value={formData.birthdate}
+                onChange={handleChange}
+                disabled={!editMode}
+              />
+            </label>
+            <label className="block mt-4">
+              <span className="text-gray-700">Phone Number</span>
+              <input
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                type="text"
+                name="phonenumber"
+                value={formData.phonenumber}
+                onChange={handleChange}
+                disabled={!editMode}
+              />
+            </label>
+            <label className="block mt-4">
+              <span className="text-gray-700">Country</span>
+              <input
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                type="text"
+                name="country"
+                value={formData.country}
+                onChange={handleChange}
+                disabled={!editMode}
+              />
+            </label>
+            <label className="block mt-4">
+              <span className="text-gray-700">Address</span>
+              <input
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                type="text"
+                name="address"
+                value={formData.address}
+                onChange={handleChange}
+                disabled={!editMode}
+              />
+            </label>
+            <label className="block mt-4">
+              <span className="text-gray-700">Postal Code</span>
+              <input
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                type="text"
+                name="postal_code"
+                value={formData.postal_code}
+                onChange={handleChange}
+                disabled={!editMode}
+              />
+            </label>
+            <label className="block mt-4">
+              <span className="text-gray-700">City</span>
+              <input
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                type="text"
+                name="city"
+                value={formData.city}
+                onChange={handleChange}
+                disabled={!editMode}
+              />
+            </label>
+            <label className="block mt-4">
+              <span className="text-gray-700">DNI</span>
+              <input
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                type="text"
+                name="dni"
+                value={formData.dni}
+                onChange={handleChange}
+                disabled={!editMode}
+              />
+            </label>
 
-          {editMode && (
-            <button
-              className={`mt-4 font-bold py-2 px-4 rounded ${
-                !isValid || isEqual(originalData, formData)
-                  ? "bg-blue-200 text-white cursor-not-allowed"
-                  : "bg-blue-500 hover:bg-blue-700 text-white"
-              }`}
-              type="button"
-              onClick={handleSubmit}
-              disabled={!isValid || isEqual(originalData, formData)}
-            >
-              Save
-            </button>
-          )}
-        </form>
+            {editMode && (
+              <button
+                className={`mt-4 font-bold py-2 px-4 rounded ${
+                  !isValid || isEqual(originalData, formData)
+                    ? "bg-blue-200 text-white cursor-not-allowed"
+                    : "bg-blue-500 hover:bg-blue-700 text-white"
+                }`}
+                type="button"
+                onClick={handleSubmit}
+                disabled={!isValid || isEqual(originalData, formData)}
+              >
+                Save
+              </button>
+            )}
+          </form>
+        </div>
       </div>
-    </div>
+    </Sidebar>
   );
 }
 

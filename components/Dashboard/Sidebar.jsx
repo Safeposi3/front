@@ -25,19 +25,19 @@ const Sidebar = ({ children }) => {
               <RxDashboard size={20} />
             </div>
           </Link>
-          <Link href="/dashboard">
+          <Link href="/my-ships">
             <div className="bg-gray-100 hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
               <RiShip2Line size={20} />
             </div>
           </Link>
-          <Link href="/dashboard">
+          <Link href="/my-reservations">
             <div className="bg-gray-100 hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
               <FaRegCalendarCheck size={20} />
             </div>
           </Link>
         </div>
         <div className="flex justify-center items-center cursor-pointer">
-          <Link href="/dashboard">
+          <Link href="/my-account">
             <div className="bg-gray-100 hover:bg-gray-200 cursor-pointer p-3 rounded-lg inline-block">
               <RxPerson size={20} />
             </div>
