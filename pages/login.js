@@ -44,6 +44,8 @@ export default function Login() {
       Swal.fire({
         icon: "success",
         title: "Login successful",
+        showConfirmButton: false,
+        timer: 1500,
       }).then(() => {
         dispatch({ type: "LOGIN_RESET" });
         router.push("/dashboard");

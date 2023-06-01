@@ -11,19 +11,16 @@ export default function Home() {
         <div className="max-w-[1240px] w-full h-full mx-auto grid grid-cols-1 gap-4 items-center sm:grid-cols-2 sm:pt-40 sm:pb-20">
           <div className="bg-white p-5 pt-32 sm:pt-5 lg:p-20">
             <h1 className="font-bold text-4xl">
-              Penatibus cras elit montes habitasse
+              Book your buoy in the comfort of your own home
             </h1>
             <p className="my-6">
-              empus nibh mattis duis vestibulum semper proin massa nam congue
-              dis gravida. Nam; mattis platea ipsum. Mi sociis molestie suscipit
-              turpis.
+              Go ahead! What are you waiting for? Book your buoy right now to
+              have a fantastic day at sea while helping preserve the marine
+              ecosystem, Don't think twice!
             </p>
             <button className="bg-black text-white text-lg px-5 py-3 my-6 rounded-lg">
-              Dictumst cursus vitae
+              Book Now
             </button>
-            <p className="my-6">
-              Habitasse porttitor hendrerit turpis laoreet.
-            </p>
           </div>
         </div>
       </div>
@@ -32,23 +29,27 @@ export default function Home() {
       <div className="w-full md:h-screen flex items-center py-16">
         <div className="max-w-[1240px] m-auto md:grid grid-cols-2 gap-24">
           <div className="p-5">
-            <p className="uppercase text-xl tracking-widest text-[#5651e5]">
-              About
+            <p className="uppercase text-3xl tracking-widest text-[#5651e5]">
+              About Us
             </p>
-            <h2 className="font-bold text-3xl py-4">Business</h2>
             <p className="py-2 text-gray-600">
-              I specialize in building mobile responsive front-end UI
-              applications that connect with API’s and other backend
-              technologies. I’m passionate about learning new technologies and
-              understand there is more than one way to accomplish a task. Though
-              I am most proficient in building front-end applications using
-              HTML, CSS, Javascript, and React, I am a quick learner and can
-              pick up new tech stacks as needed. I believe that being a great
-              developer is not using one specific language, but choosing the
-              best tool for the job.
+              Ocean Blue Reef is a company that arises from the problem of the
+              seabed destruction and the overcrowding of coves and bays by
+              recreational boats. At Ocean Blue Reef, we offer a smart mooring
+              service for boats, with the aim of putting an end to the
+              deforestation of the marine floor, thus helping sailors to easily
+              moor their boats and, above all, to aid the environment. Our
+              objective is to prevent overcrowding and disputes among sailors
+              and preserve the marine wildlife by providing a safe, economical,
+              and green alternative, saving time, effort, and money.
             </p>
-            <p className="py-2 text-gray-600 underline cursor-pointer">
-              Check out some of my lastest projects.
+            <p className="uppercase text-xl tracking-widest text-[#5651e5]"></p>
+            <h2 className="font-bold text-3xl py-4">Objective</h2>
+            <p className="py-2 text-gray-600">
+              Our goal is clear and simple: to protect the Oceanic posidonia,
+              which is home to thousands of marine animal and plant species,
+              while also helping to manage anchorage points for boats in coves
+              and bays.
             </p>
           </div>
           <div className="w-full h-auto m-auto flex justify-center items-center p-4 hover:scale-105 ease-in duration-300">
@@ -64,45 +65,46 @@ export default function Home() {
 
           <div className="bg-[#cee4ea] p-5 lg:p-16">
             <p className="uppercase text-xl tracking-widest text-[#5651e5]">
-              Precios
+              Prices
             </p>
-            <h2 className="font-bold text-3xl py-4">¿Cuanto pagas?</h2>
+            <h2 className="font-bold text-3xl py-4">Price per hours</h2>
             <p className="py-2 text-gray-600">
-              Date de alta en nuestra app y empieza a disfrutar de un servicio
-              de coches con tarifa flexible por minutos, horas y días.
+              We have a wide range of prices for boats it depends on the type of
+              size of the boat and the season.
             </p>
-            <p className="pb-10 text-gray-600">
-              Ve más allá con los coches WiBLE.
-            </p>
+            <p className="pb-10 text-gray-600">Temporada baja</p>
             <div className="grid grid-cols-2 text-center">
               <div className="border-t-2 flex justify-start items-center py-2">
-                precio por minuto
+                Less than 12 meters
               </div>
               <div className="border-t-2 flex justify-end items-center py-2 text-2xl font-bold">
-                0,18€ - 0,36€*
+                0,38$/hour
               </div>
               <div className="border-t-2 flex justify-start items-center py-2">
-                precio por hora
+                Between 12 and 15 meters
               </div>
               <div className="border-t-2 flex justify-end items-center py-2 text-2xl font-bold">
-                9€*
+                0,61$/hour
               </div>
               <div className="border-y-2 flex justify-start items-center py-2">
-                precio por día
+                Between 15 and 20 meters
               </div>
               <div className="border-y-2 flex justify-end items-center py-2 text-2xl font-bold">
-                60€*
+                1,06$/hour
+              </div>
+              <div className="border-y-2 flex justify-start items-center py-2">
+                More than 20 meters
+              </div>
+              <div className="border-y-2 flex justify-end items-center py-2 text-2xl font-bold">
+                3,26$/hour
               </div>
             </div>
-            <p className="py-10 text-gray-600">
-              *100km incluídos, precio por km extra 0,28€
-            </p>
           </div>
         </div>
       </div>
 
       {/* Step section */}
-      <div className="w-full md:h-screen flex items-center py-16">
+      <div className="w-full lg:h-screen flex items-center py-10">
         <div className="max-w-[1240px] m-auto md:grid grid-cols-3 gap-20 p-5">
           <div className="flex flex-col items-center justify-center">
             <Image
