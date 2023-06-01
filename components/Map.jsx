@@ -10,8 +10,7 @@ export default function Map({ onPointClick, selectedShip }) {
 
   const [selectedBuoy, setSelectedBuoy] = useState(null);
   const [tabarcaCoords, setTabarcaCoords] = useState([
-    38.16631881567097,
-    -0.4794345305520023,
+    38.16631881567097, -0.4794345305520023,
   ]);
 
   useEffect(() => {
@@ -35,7 +34,7 @@ export default function Map({ onPointClick, selectedShip }) {
 
   return (
     <div
-      className="w-[73vw] h-[80vh] sm:w-[77.5vw] md:w-[81.5vw] lg:w-[63vw] xl:w-[67vw]"
+      className="w-auto h-[80vh]"
       // style={{ height: "90vh", width: "70vw" }}
       //with this you can modify the size of the map vh is equal to % of viewport
     >
@@ -43,7 +42,7 @@ export default function Map({ onPointClick, selectedShip }) {
         center={tabarcaCoords}
         zoom={17}
         // style={{ height: "100%", width: "100%" }}
-        className="w-[100%] h-[100%]"
+        className="w-[100%] h-[100%] rounded-lg shadow-lg"
         scrollWheelZoom={false}
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { UserContext } from "@/context/UserContext";
-const Header = () => {
+const Header = ({ title }) => {
   const router = useRouter();
   const { user } = useContext(UserContext);
   const { token } = useContext(UserContext);
@@ -16,7 +16,7 @@ const Header = () => {
 
   return (
     <div className="flex justify-between px-4 pt-4">
-      <h2>Dashboard</h2>
+      <h2>{title}</h2>
 
       <h2>Welcome Back, {userData.first_name}</h2>
     </div>
