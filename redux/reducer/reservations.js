@@ -75,3 +75,22 @@ export const deleteReservationReducer = (state = {}, action) => {
       return state;
   }
 };
+
+export const listReservationsReducer = (state = {}, action) => {
+  switch (action.type) {
+    case u.LIST_RESERVATION_REQUEST:
+      return {
+        loading: true,
+      };
+    case u.LIST_RESERVATION_SUCCESS:
+      return {
+        data: [...action.payload],
+      };
+    case u.LIST_RESERVATION_FAILURE:
+      return {
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};

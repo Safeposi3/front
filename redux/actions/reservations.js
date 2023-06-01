@@ -1,7 +1,7 @@
 import axios from "axios";
 import * as u from "../../constants/reservations";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+const BASE_URL = "https://oceanbluereef.pythonanywhere.com/api";
 export const getReservations = (id) => async (dispatch) => {
   try {
     dispatch({ type: u.GET_RESERVATION_REQUEST });
@@ -51,5 +51,19 @@ export const updateReservation = (id, data) => async (dispatch) => {
     dispatch({ type: u.UPDATE_RESERVATION_SUCCESS, payload: reservation });
   } catch (error) {
     dispatch({ type: u.UPDATE_RESERVATION_FAILURE, payload: error });
+  }
+};
+
+export const listReservations = () => async (dispatch) => {
+  try {
+    dispatch({ type: u.LIST_RESERVATION_REQUEST });
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+    };
+    const { data } = await axios.get(`${BASE_URL}/reservations/`, { headers });
+    dispatch({ type: u.LIST_RESERVATION_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: u.LIST_RESERVATION_FAILURE, payload: error });
   }
 };

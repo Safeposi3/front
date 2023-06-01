@@ -94,32 +94,32 @@ function Account() {
 
     let newErrors = {};
 
-    if (!formData.first_name.match(nameRegex)) {
+    if (!formData?.first_name?.match(nameRegex)) {
       newErrors.first_name = "First Name should only contain letters.";
     }
-    if (!formData.last_name.match(nameRegex)) {
+    if (!formData?.last_name?.match(nameRegex)) {
       newErrors.last_name = "Last Name should only contain letters.";
     }
-    if (!formData.email.match(emailRegex)) {
+    if (!formData?.email?.match(emailRegex)) {
       newErrors.email = "Email should be in the correct format.";
     }
-    if (!formData.birthdate.match(dateRegex)) {
+    if (!formData?.birthdate?.match(dateRegex)) {
       newErrors.birthdate = "Birthdate should be in the format YYYY-MM-DD.";
     }
-    if (!formData.phonenumber.match(phoneRegex)) {
+    if (!formData?.phonenumber?.match(phoneRegex)) {
       newErrors.phonenumber =
         "Phone number should only contain numbers and be between 10 to 15 digits.";
     }
-    if (!formData.country) {
+    if (!formData?.country) {
       newErrors.country = "Country should not be empty.";
     }
-    if (!formData.city) {
+    if (!formData?.city) {
       newErrors.city = "City should not be empty.";
     }
-    if (!formData.address) {
+    if (!formData?.address) {
       newErrors.address = "Address should not be empty.";
     }
-    if (!formData.postal_code.match(postalCodeRegex)) {
+    if (!formData?.postal_code?.match(postalCodeRegex)) {
       newErrors.postal_code = "Postal Code should be 5 digits."; // adjust this based on your country
     }
     if (!formData?.dni?.match(dniRegex)) {

@@ -1,7 +1,7 @@
 import axios from "axios";
 import * as u from "../../constants/ships";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+const BASE_URL = "https://oceanbluereef.pythonanywhere.com/api";
 
 export const getShip = (id) => async (dispatch) => {
   try {
@@ -22,7 +22,10 @@ export const createShip = (shipData) => async (dispatch) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${sessionStorage.getItem("token")}`,
     };
-    const { data } = await axios.post(`${BASE_URL}/ships/`, shipData);
+    console.log(shipData);
+    const { data } = await axios.post(`${BASE_URL}/ships/`, shipData, {
+      headers,
+    });
 
     dispatch({ type: u.CREATE_SHIP_SUCCESS, payload: data });
   } catch (error) {

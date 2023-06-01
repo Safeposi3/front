@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as a from "../../constants/auth";
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+const BASE_URL = "https://oceanbluereef.pythonanywhere.com/api";
 export const login = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: a.LOGIN_REQUEST });

@@ -12,6 +12,7 @@ import {
   createReservationReducer,
   updateReservationReducer,
   deleteReservationReducer,
+  listReservationsReducer,
 } from "./reducer/reservations";
 import {
   getBuoyReducer,
@@ -37,6 +38,7 @@ export default configureStore({
     createReservation: createReservationReducer,
     updateReservation: updateReservationReducer,
     deleteReservation: deleteReservationReducer,
+    listReservations: listReservationsReducer,
     login: LoginReducer,
     register: RegisterReducer,
     getBuoy: getBuoyReducer,

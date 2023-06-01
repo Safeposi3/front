@@ -1,7 +1,7 @@
 import axios from "axios";
 import * as u from "../../constants/user";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+const BASE_URL = "https://oceanbluereef.pythonanywhere.com/api";
 export const getUserInfo = () => async (dispatch) => {
   try {
     dispatch({ type: u.GET_USER_INFO_REQUEST });
