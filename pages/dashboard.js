@@ -2,15 +2,18 @@ import React, { useEffect, useState } from "react";
 
 import dynamic from "next/dynamic";
 import "leaflet/dist/leaflet.css";
-import Sidebar from "../components/Sidebar/Sidebar";
+import MapPanel from "../components/Sidebar/MapPanel";
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
 import Stripe from "../components/Payment/Stripe";
 const { useRouter } = require("next/router");
+import Sidebar from "@/components/Dashboard/Sidebar";
+import Header from "@/components/Dashboard/Header";
 
 const MyMap = dynamic(() => import("../components/Map"), {
   ssr: false,
 });
+
 export default function Dashboard() {
   const [selectedPoint, setSelectedPoint] = useState(null);
   const [amount, setAmount] = useState(0);
@@ -29,27 +32,36 @@ export default function Dashboard() {
   const handleAmountChange = (amount) => {
     setAmount(amount);
   };
+
   return (
-    <div className="flex flex-row lg:rounded-r-full">
-      <div className="w-[30%] bg-gray-200">
-        <Sidebar
-          selectedPoint={selectedPoint}
-          setOpenStripe={setOpenStripe}
-          setAmount={handleAmountChange}
-          onShipSelect={handleShipSelect}
-          selectedShip={selectedShip}
-        />
-      </div>
-      <div className="w-[70%]">
-        {openStripe[0] && (
-          <Stripe
-            amount={amount}
-            reservationId={openStripe[1]}
-            openStripe={openStripe}
-          />
-        )}
-        <MyMap onPointClick={handlePointClick} selectedShip={selectedShip} />
-      </div>
-    </div>
+    <Sidebar>
+      <main className="bg-gray-100 min-h-screen">
+        <Header />
+        <div className="p-4 grid grid-cols-1 lg:grid-cols-4 gap-0 lg:gap-4">
+          <div className="w-full md:col-span-1 relative h-full border rounded-lg bg-white">
+            <MapPanel
+              selectedPoint={selectedPoint}
+              setOpenStripe={setOpenStripe}
+              setAmount={handleAmountChange}
+              onShipSelect={handleShipSelect}
+              selectedShip={selectedShip}
+            />
+          </div>
+          <div className="w-full col-span-3 h-full m-auto p-4 border rounded-lg bg-white mt-3 lg:mt-0">
+            {openStripe[0] && (
+              <Stripe
+                amount={amount}
+                reservationId={openStripe[1]}
+                openStripe={openStripe}
+              />
+            )}
+            <MyMap
+              onPointClick={handlePointClick}
+              selectedShip={selectedShip}
+            />
+          </div>
+        </div>
+      </main>
+    </Sidebar>
   );
 }

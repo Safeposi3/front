@@ -23,7 +23,7 @@ const options = {
     next: () => <span>Next.</span>,
   },
 
-  datepickerClassNames: "mt-[160%] lg:mt-[24%] lg:ms-3",
+  datepickerClassNames: "me-40 z-[9999]",
   defaultDate: new Date(),
   language: "en",
 };

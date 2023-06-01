@@ -49,10 +49,11 @@ export default function PointInfo({ point, setOpenStripe, setAmount }) {
     setAmount((totalHours * point.price1).toFixed(2) * 100);
     setTotalPrice((totalHours * point.price1).toFixed(2));
   };
+
   return (
-    <div className="bg-gray-100 p-4 rounded-md mx-auto shadow-md w-[80%]">
+    <div className="bg-gray-100 rounded-lg shadow-lg px-0 py-3">
       {!point ? (
-        <div className="text-center mt-4">
+        <div className="text-center">
           <h2 className="text-lg font-semibold">Select a buoy</h2>
           <p>Select a point on the map to view zone information.</p>
         </div>

@@ -11,7 +11,8 @@ import {
 } from "@mui/material";
 
 import Link from "next/link";
-export default function Sidebar({
+
+export default function MapPanel({
   selectedPoint,
   onRangeAvailableChange,
   setOpenStripe,
@@ -35,11 +36,9 @@ export default function Sidebar({
   };
 
   return (
-    <div className="w-full max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl 2xl:max-w-3xl bg-gray-200 p-4">
-      <div className="bg-gray-100 rounded-md shadow-md w-[80%] mx-auto space-y-4 p-6 md:p-8 lg:w-[80%]">
-        <h2 className="font-bold text-xl mb-4 text-center">
-          Ships availables:
-        </h2>
+    <div className="p-4 flex justify-center gap-4 flex-col md:flex-row lg:block">
+      <div className="bg-gray-100 rounded-lg shadow-md px-0 py-3 w-full">
+        <h2 className="font-bold text-xl text-center">Ships availables:</h2>
         {dataListShips && dataListShips.length > 0 ? (
           <div className="space-y-4">
             {dataListShips.map((ship) => (
@@ -67,7 +66,7 @@ export default function Sidebar({
             ))}
           </div>
         ) : (
-          <div className="text-red-500 font-bold text-center">
+          <div className="text-red-500 font-bold text-center my-2">
             <h3>No ships available</h3>
           </div>
         )}
@@ -83,7 +82,8 @@ export default function Sidebar({
           </Link>
         </div>
       </div>
-      <div className="my-6 md:my-8">
+
+      <div className=" mt-0 lg:mt-4 w-full">
         <PointInfo
           point={selectedPoint}
           onRangeAvailableChange={onRangeAvailableChange}
