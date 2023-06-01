@@ -47,7 +47,7 @@ export default function Dashboard() {
               selectedShip={selectedShip}
             />
           </div>
-          <div className="w-full col-span-3 h-full m-auto p-4 border rounded-lg bg-white mt-3 lg:mt-0">
+          <div className="w-full col-span-3 h-[85vh] m-auto p-4 border rounded-lg bg-white mt-3 lg:mt-0">
             {openStripe[0] && (
               <Stripe
                 amount={amount}

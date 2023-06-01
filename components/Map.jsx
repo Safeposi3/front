@@ -34,7 +34,7 @@ export default function Map({ onPointClick, selectedShip }) {
 
   return (
     <div
-      className="w-[73vw] h-[65vh] sm:w-[77.5vw] md:w-[81.5vw] lg:w-[63vw] xl:w-[67vw]"
+      className="w-[73vw] h-[80vh] sm:w-[77.5vw] md:w-[81.5vw] lg:w-[63vw] xl:w-[67vw]"
       // style={{ height: "90vh", width: "70vw" }}
       //with this you can modify the size of the map vh is equal to % of viewport
     >

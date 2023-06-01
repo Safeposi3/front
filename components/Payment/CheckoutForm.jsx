@@ -11,7 +11,7 @@ import DialogContent from "@mui/material/DialogContent";
 import Button from "@mui/material/Button";
 import Swal from "sweetalert2";
 import { useRouter } from "next/router";
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+const BASE_URL = "https://oceanbluereef.pythonanywhere.com/api";
 const CARD_ELEMENT_OPTIONS = {
   style: {
     base: {
