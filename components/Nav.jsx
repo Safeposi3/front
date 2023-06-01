@@ -35,10 +35,10 @@ const NavBar = () => {
         <Link href="/">
           <Image
             className="cursor-pointer"
-            src="/../public/logo.png"
+            src="/OBR_logo_transparen.png"
             alt="/"
-            width={35}
-            height={70}
+            width={65}
+            height={65}
           />
         </Link>
         <div>
@@ -89,10 +89,10 @@ const NavBar = () => {
             <div className="flex w-full justify-between items-center">
               <Link href="/">
                 <Image
-                  src="/../public/logo.png"
+                  src="/OBR_logo_transparen.png"
                   alt="/"
-                  width={50}
-                  height={100}
+                  width={65}
+                  height={65}
                 />
               </Link>
               <div

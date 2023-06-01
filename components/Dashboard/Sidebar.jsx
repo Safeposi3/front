@@ -12,10 +12,10 @@ const Sidebar = ({ children }) => {
         <div className="flex flex-col items-center">
           <Link href="/dashboard">
             <Image
-              className="cursor-pointer"
-              src="/../public/logo.png"
+              className="cursor-pointer rounded-lg"
+              src="/OBR_logoAzul.png"
               alt="/"
-              width={35}
+              width={70}
               height={70}
             />
           </Link>
