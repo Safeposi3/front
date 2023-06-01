@@ -7,7 +7,6 @@ export default function ThemeProvider({ children }) {
 
   const toggleTheme = () => {
     setIsDark(!isDark);
-    console.log(" isDark: ", isDark);
   };
 
   return (

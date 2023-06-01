@@ -32,11 +32,7 @@ export default function Register() {
     city: "",
     dni: "",
   });
-  useEffect(() => {
-    if (useAuth) {
-      router.push("/dashboard");
-    }
-  }, [useAuth]);
+
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
