@@ -35,10 +35,10 @@ const NavBar = () => {
         <Link href="/">
           <Image
             className="cursor-pointer"
-            src="/OBR_logo_transparen.png"
+            src="/logo-OBR-letras.png"
             alt="/"
-            width={65}
-            height={65}
+            width={180}
+            height={90}
           />
         </Link>
         <div>
@@ -55,7 +55,9 @@ const NavBar = () => {
               <li className="ml-10 text-sm uppercase hover:border-b">Prices</li>
             </Link>
             <Link href="/#steps">
-              <li className="ml-10 text-sm uppercase hover:border-b">Steps</li>
+              <li className="ml-10 text-sm uppercase hover:border-b hidden">
+                Steps
+              </li>
             </Link>
             <Link href="/login">
               <li className="ml-10 text-sm uppercase hover:border-b">Login</li>
@@ -88,10 +90,10 @@ const NavBar = () => {
             <div className="flex w-full justify-between items-center">
               <Link href="/">
                 <Image
-                  src="/OBR_logo_transparen.png"
+                  src="/logo-OBR-letras.png"
                   alt="/"
-                  width={65}
-                  height={65}
+                  width={180}
+                  height={90}
                 />
               </Link>
               <div
@@ -125,7 +127,10 @@ const NavBar = () => {
                 </li>
               </Link>
               <Link href="/#steps">
-                <li onClick={() => setNav(false)} className="py-4 text-sm">
+                <li
+                  onClick={() => setNav(false)}
+                  className="py-4 text-sm hidden"
+                >
                   Steps
                 </li>
               </Link>

@@ -203,7 +203,11 @@ function Ships() {
                       </tr>
                     ))
                   ) : (
-                    <p className="text-red-500">No ships available.</p>
+                    <tr>
+                      <td>
+                        <p className="text-red-500">No ships available.</p>
+                      </td>
+                    </tr>
                   )}
                 </tbody>
               </table>

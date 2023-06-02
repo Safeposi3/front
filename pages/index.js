@@ -109,7 +109,10 @@ export default function Home() {
       </div>
 
       {/* Step section */}
-      <div id="steps" className="w-full lg:h-screen flex items-center py-28">
+      <div
+        id="steps"
+        className="w-full lg:h-screen flex items-center py-28 hidden"
+      >
         <div className="max-w-[1240px] m-auto md:grid grid-cols-3 gap-20 p-5">
           <div className="flex flex-col items-center justify-center">
             <Image
