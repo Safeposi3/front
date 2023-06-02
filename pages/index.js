@@ -63,7 +63,7 @@ export default function Home() {
       {/* prices section */}
       <div
         id="prices"
-        className="w-full flex flex-wrap-reverse items-center pt-20"
+        className="w-full flex flex-wrap-reverse items-center pt-20 mb-4"
       >
         <div className="m-auto md:grid grid-cols-2">
           <div className="bg-[url('/image-prices.JPG')] bg-center bg-no-repeat bg-cover h-60 sm:h-72 md:h-auto"></div>
@@ -102,91 +102,6 @@ export default function Home() {
               </div>
               <div className="border-y-2 flex justify-end items-center py-2 text-2xl font-bold">
                 3,26$/hour
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Step section */}
-      <div id="steps" className="w-full lg:h-screen flex items-center py-28">
-        <div className="max-w-[1240px] m-auto md:grid grid-cols-3 gap-20 p-5">
-          <div className="flex flex-col items-center justify-center">
-            <Image
-              src="/../public/coche.png"
-              alt="/"
-              width={150}
-              height={150}
-            />
-            <h2 className="font-bold text-3xl py-4">
-              empieza a conducir tu WiBLE en Madrid
-            </h2>
-            <p className="py-2 text-gray-600">
-              Empezar a conducir los coches híbridos enchufables WiBLE es muy
-              fácil, completa estos pasos y ve más allá.
-            </p>
-          </div>
-          <div className="col-span-2">
-            <div className="grid grid-cols-2 gap-10">
-              <div className="flex flex-col">
-                <Image
-                  src="/../public/01.png"
-                  alt="/"
-                  width={90}
-                  height={115}
-                />
-                <p className="py-2 text-gray-600 font-bold">
-                  Descárgate la app de WiBLE
-                </p>
-                <p className="py-2 text-gray-600">
-                  Todos los servicios de WiBLE en tu movil. Encuentra tu WiBLE
-                  más cercano.
-                </p>
-              </div>
-              <div className="flex flex-col">
-                <Image
-                  src="/../public/01.png"
-                  alt="/"
-                  width={90}
-                  height={115}
-                />
-                <p className="py-2 text-gray-600 font-bold">
-                  Descárgate la app de WiBLE
-                </p>
-                <p className="py-2 text-gray-600">
-                  Todos los servicios de WiBLE en tu movil. Encuentra tu WiBLE
-                  más cercano.
-                </p>
-              </div>
-              <div className="flex flex-col">
-                <Image
-                  src="/../public/01.png"
-                  alt="/"
-                  width={90}
-                  height={115}
-                />
-                <p className="py-2 text-gray-600 font-bold">
-                  Descárgate la app de WiBLE
-                </p>
-                <p className="py-2 text-gray-600">
-                  Todos los servicios de WiBLE en tu movil. Encuentra tu WiBLE
-                  más cercano.
-                </p>
-              </div>
-              <div className="flex flex-col">
-                <Image
-                  src="/../public/01.png"
-                  alt="/"
-                  width={90}
-                  height={115}
-                />
-                <p className="py-2 text-gray-600 font-bold">
-                  Descárgate la app de WiBLE
-                </p>
-                <p className="py-2 text-gray-600">
-                  Todos los servicios de WiBLE en tu movil. Encuentra tu WiBLE
-                  más cercano.
-                </p>
               </div>
             </div>
           </div>
