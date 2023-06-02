@@ -28,7 +28,7 @@ export default function Home() {
       </div>
 
       {/* about section */}
-      <div className="w-full md:h-screen flex items-center py-16">
+      <div id="about" className="w-full md:h-screen flex items-center py-28">
         <div className="max-w-[1240px] m-auto md:grid grid-cols-2 gap-24">
           <div className="p-5">
             <p className="uppercase text-3xl tracking-widest text-[#5651e5]">
@@ -61,7 +61,10 @@ export default function Home() {
       </div>
 
       {/* prices section */}
-      <div className="w-full flex flex-wrap-reverse items-center">
+      <div
+        id="prices"
+        className="w-full flex flex-wrap-reverse items-center pt-20"
+      >
         <div className="m-auto md:grid grid-cols-2">
           <div className="bg-[url('/image-prices.JPG')] bg-center bg-no-repeat bg-cover h-60 sm:h-72 md:h-auto"></div>
 
@@ -106,7 +109,7 @@ export default function Home() {
       </div>
 
       {/* Step section */}
-      <div className="w-full lg:h-screen flex items-center py-10">
+      <div id="steps" className="w-full lg:h-screen flex items-center py-28">
         <div className="max-w-[1240px] m-auto md:grid grid-cols-3 gap-20 p-5">
           <div className="flex flex-col items-center justify-center">
             <Image

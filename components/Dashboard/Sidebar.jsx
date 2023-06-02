@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import { RxDashboard, RxPerson } from "react-icons/rx";
 import { FaRegCalendarCheck } from "react-icons/fa";
-import { RiShip2Line } from "react-icons/ri";
+import { RiShip2Line, RiShutDownLine } from "react-icons/ri";
 import Image from "next/image";
 
 const Sidebar = ({ children }) => {
@@ -35,11 +35,14 @@ const Sidebar = ({ children }) => {
               <FaRegCalendarCheck size={20} />
             </div>
           </Link>
-        </div>
-        <div className="flex justify-center items-center cursor-pointer">
           <Link href="/my-account">
-            <div className="bg-gray-100 hover:bg-gray-200 cursor-pointer p-3 rounded-lg inline-block">
+            <div className="bg-gray-100 hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block">
               <RxPerson size={20} />
+            </div>
+          </Link>
+          <Link href="/">
+            <div className="bg-red-500 hover:bg-red-300 cursor-pointer my-4 p-3 rounded-lg inline-block">
+              <RiShutDownLine className="text-white" size={20} />
             </div>
           </Link>
         </div>
