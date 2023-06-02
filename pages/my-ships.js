@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { listShips, createShip, deleteShip } from "@/redux/actions/ships";
 import Swal from "sweetalert2";
-import { FaRegEdit, FaPlusCircle } from "react-icons/fa";
 import Sidebar from "@/components/Dashboard/Sidebar";
-import { Button } from "@mui/material";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import SailingIcon from "@mui/icons-material/Sailing";
+import DeleteIcon from "@mui/icons-material/Delete";
 import Header from "@/components/Dashboard/Header";
 
 function Ships() {
@@ -101,85 +103,141 @@ function Ships() {
     <Sidebar>
       <div className="bg-gray-100 min-h-screen">
         <Header title="My Ships" />
-        <div className="p-4 flex flex-col md:flex-row gap-4">
+        <div className="p-4 flex flex-col gap-4">
           <div className="bg-white rounded-lg shadow-md p-4 w-full">
-            <h2 className="mt-4 text-xl font-bold text-blue-700">
+            <h2 className="text-xl font-bold text-blue-700 mb-3">
               Create a new ship
             </h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="form-group">
-                <label className="block">
-                  <span className="text-gray-700">Ship Registration</span>
-                  <input
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                    type="text"
-                    name="ship_registration"
-                    value={formData.ship_registration}
-                    onChange={handleChange}
-                  />
-                </label>
-              </div>
-              <div className="form-group">
-                <label className="block">
-                  <span className="text-gray-700">Length</span>
-                  <input
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                    type="text"
-                    name="length"
-                    value={formData.length}
-                    onChange={handleChange}
-                  />
-                </label>
-              </div>
-              <div className="form-group">
-                <label className="block">
-                  <span className="text-gray-700">Ship Title</span>
-                  <input
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                    type="file"
-                    name="ship_title"
-                    onChange={handleFileChange}
-                  />
-                </label>
-              </div>
-              <div className="form-group">
-                <button
-                  className="mt-4 font-bold py-2 px-4 rounded bg-blue-500 hover:bg-blue-700 text-white"
+            <form onSubmit={handleSubmit}>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <TextField
+                  name="ship_registration"
+                  className="w-full"
+                  id="outlined-basic"
+                  label="Ship Registration"
+                  variant="outlined"
+                  value={formData.ship_registration}
+                  onChange={handleChange}
+                />
+                <TextField
+                  className="w-full"
+                  id="outlined-basic"
+                  label="Length"
+                  variant="outlined"
+                  name="length"
+                  value={formData.length}
+                  onChange={handleChange}
+                />
+                {/* <div className="w-full">
+                  <label>
+                    <span className="text-gray-700">Ship Title</span>
+                    <input
+                      className="w-full shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                      type="file"
+                      name="ship_title"
+                      onChange={handleFileChange}
+                    />
+                  </label>
+                </div> */}
+                <Button
                   type="submit"
+                  className="w-full"
+                  style={{ fontSize: 20 }}
+                  variant="contained"
+                  startIcon={<SailingIcon style={{ fontSize: 20 }} />}
                 >
-                  <FaPlusCircle /> Create Ship
-                </button>
+                  Create Ship
+                </Button>
               </div>
             </form>
           </div>
 
           {/* List */}
-          <div className="bg-white rounded-lg shadow-md p-4 space-y-4 w-full">
-            {ships?.length ? (
-              ships.map((ship) => (
-                <div
-                  key={ship.ship_registration}
-                  className="bg-blue-100 p-4 rounded-lg space-y-2"
-                >
-                  <h2 className="font-semibold text-blue-600">
-                    {ship.ship_registration}
-                  </h2>
-                  <p className="text-sm text-gray-700">Length: {ship.length}</p>
-                  <p className="text-sm text-gray-700">
-                    Created at: {ship.created_at}
-                  </p>
-                  <Button
-                    variant="contained"
-                    color="error"
-                    onClick={() => handleDelete(ship.id)}
+          <div className="rounded-lg w-full">
+            <div className="overflow-auto rounded-lg shadow hidden md:block">
+              <table className="w-full">
+                <thead className="bg-gray-50 border-b-2 border-gray-200">
+                  <tr>
+                    <th className="p-3 text-sm font-semibold tracking-wide text-left">
+                      Ship
+                    </th>
+                    <th className="p-3 text-sm font-semibold tracking-wide text-left">
+                      Length
+                    </th>
+                    <th className="p-3 text-sm font-semibold tracking-wide text-left">
+                      Created at
+                    </th>
+                    <th className="p-3 text-sm font-semibold tracking-wide text-left">
+                      Actions
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100">
+                  {ships?.length ? (
+                    ships.map((ship, index) => (
+                      <tr
+                        key={ship.ship_registration}
+                        className={`${
+                          index % 2 === 0 ? "bg-gray-100" : "bg-white"
+                        }`}
+                      >
+                        <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                          {ship.ship_registration}
+                        </td>
+                        <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                          {ship.length}
+                        </td>
+                        <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                          {ship.created_at}
+                        </td>
+                        <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                          <Button
+                            variant="contained"
+                            color="error"
+                            startIcon={<DeleteIcon />}
+                            onClick={() => handleDelete(ship.id)}
+                          >
+                            Delete
+                          </Button>
+                        </td>
+                      </tr>
+                    ))
+                  ) : (
+                    <p className="text-red-500">No ships available.</p>
+                  )}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Mobil */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:hidden">
+              {ships?.length ? (
+                ships.map((ship) => (
+                  <div
+                    key={ship.ship_registration}
+                    className="bg-white p-4 rounded-lg shadow"
                   >
-                    Delete
-                  </Button>
-                </div>
-              ))
-            ) : (
-              <p className="text-red-500">No ships available.</p>
-            )}
+                    <div className="flex flex-col text-sm">
+                      <div className="font-semibold text-blue-600">
+                        {ship.ship_registration}
+                      </div>
+                      <div className="my-1">Length: {ship.length}</div>
+                      <div className="my-1">Created at: {ship.created_at}</div>
+                      <Button
+                        variant="contained"
+                        color="error"
+                        startIcon={<DeleteIcon />}
+                        onClick={() => handleDelete(ship.id)}
+                      >
+                        Delete
+                      </Button>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <p className="text-red-500">No ships available.</p>
+              )}
+            </div>
           </div>
         </div>
       </div>

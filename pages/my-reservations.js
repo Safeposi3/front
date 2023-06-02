@@ -4,6 +4,7 @@ import { listReservations } from "@/redux/actions/reservations";
 import { useRouter } from "next/router";
 import Sidebar from "@/components/Dashboard/Sidebar";
 import Header from "@/components/Dashboard/Header";
+
 export default function MyReservationS() {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -60,6 +61,7 @@ export default function MyReservationS() {
               <tbody className="divide-y divide-gray-100">
                 {data?.map((reservation, index) => (
                   <tr
+                    key={index}
                     className={`${
                       index % 2 === 0 ? "bg-gray-100" : "bg-white"
                     }`}
@@ -111,7 +113,7 @@ export default function MyReservationS() {
           {/* Mobil */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:hidden">
             {data?.map((reservation, index) => (
-              <div className="bg-white p-4 rounded-lg shadow">
+              <div key={index} className="bg-white p-4 rounded-lg shadow">
                 <div>
                   <div className="flex justify-between items-center space-x-2 text-sm bg-gray-100 border-b-2 border-gray-200 px-2 rounded-lg mb-1">
                     <div className="text-sm font-semibold tracking-wide">
