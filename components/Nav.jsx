@@ -51,10 +51,11 @@ const NavBar = () => {
                 About Us
               </li>
             </Link>
-            <Link href="/#skills">
-              <li className="ml-10 text-sm uppercase hover:border-b">
-                Contact Us
-              </li>
+            <Link href="/#prices">
+              <li className="ml-10 text-sm uppercase hover:border-b">Prices</li>
+            </Link>
+            <Link href="/#steps">
+              <li className="ml-10 text-sm uppercase hover:border-b">Steps</li>
             </Link>
             <Link href="/login">
               <li className="ml-10 text-sm uppercase hover:border-b">Login</li>
@@ -118,9 +119,14 @@ const NavBar = () => {
                   About Us
                 </li>
               </Link>
-              <Link href="/#skills">
+              <Link href="/#prices">
                 <li onClick={() => setNav(false)} className="py-4 text-sm">
-                  Contact us
+                  Prices
+                </li>
+              </Link>
+              <Link href="/#steps">
+                <li onClick={() => setNav(false)} className="py-4 text-sm">
+                  Steps
                 </li>
               </Link>
               <Link href="/login">
