@@ -61,7 +61,7 @@ export default function Home() {
       </div>
 
       {/* prices section */}
-      <div className="w-full flex flex-wrap-reverse items-center">
+      <div className="w-full flex flex-wrap-reverse items-center mb-3">
         <div className="m-auto md:grid grid-cols-2">
           <div className="bg-[url('/image-prices.JPG')] bg-center bg-no-repeat bg-cover h-60 sm:h-72 md:h-auto"></div>
 

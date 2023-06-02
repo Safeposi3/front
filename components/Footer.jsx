@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <div className="bg-black w-full text-white py-6">
       <div className="max-w-[1240px] m-auto flex flex-col justify-between items-center md:flex-row">
-        <p className="my-1">© 2023 Empresa, Inc.</p>
+        <p className="my-1">© 2023 Ocean Reef Bue</p>
         <div className="flex my-1">
           <Link href="https://www.linkedin.com/company/ocean-blue-reef/">
             <div className="rounded-full mx-3 p-3 cursor-pointer hover:scale-105 ease-in duration-300">
